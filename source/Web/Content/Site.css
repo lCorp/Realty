@@ -1,12 +1,8 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 990px;
+    margin: auto;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -40,3 +36,42 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* custom style*/
+.web-header {
+    display: block;
+}
+
+.web-logo {
+    width: 240px;
+    float: left;
+}
+
+.web-logo-image {
+    width: 100%;
+}
+
+.web-top-nav {
+    float: right;
+}
+
+    .web-top-nav .web-top-nav-1 {
+        display: block;
+    }
+
+        .web-top-nav .web-top-nav-1 .web-top-nav-1-1,
+        .web-top-nav .web-top-nav-1 .web-top-nav-1-2,
+        .web-top-nav .web-top-nav-1 .web-top-nav-1-3,
+        .web-top-nav .web-top-nav-1 .web-top-nav-1-4 {
+            float: right;
+        }
+
+    .web-top-nav .web-top-nav-2 {
+        display: block;
+    }
+
+        .web-top-nav .web-top-nav-2 .web-top-nav-2-1,
+        .web-top-nav .web-top-nav-2 .web-top-nav-2-2,
+        .web-top-nav .web-top-nav-2 .web-top-nav-2-3 {
+            float: right;
+        }

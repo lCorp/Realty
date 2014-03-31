@@ -2,14 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Realty</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Miền Đất Mới</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
+    <div class="web-header">
+        <div class="web-logo">
+            <img class="web-logo-image" src="~/images/logo.png" alt="Logo" />
+        </div>
+        <div class="web-top-nav">
+            <div class="web-top-nav-1">
+                <div class="web-top-nav-1-1">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+                </div>
+                <div class="web-top-nav-1-2">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+                </div>
+                <div class="web-top-nav-1-3">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+                </div>
+                <div class="web-top-nav-1-4">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+                </div>
+            </div>
+            <div class="web-top-nav-2">
+                <div class="web-top-nav-2-1">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+
+                </div>
+                <div class="web-top-nav-2-2">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+
+                </div>
+                <div class="web-top-nav-2-3">
+                    <i class="fa fa-plus-circle fa-2x"></i> Đăng tin bán/Cho thuê
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="web-body">
+        @RenderBody()
+    </div>
+    <div class="web-footer">
+
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
