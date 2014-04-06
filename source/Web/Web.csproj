@@ -762,7 +762,6 @@
     <Content Include="Content\fonts\Roboto-Regular-webfont.eot" />
     <Content Include="Content\fonts\Roboto-Regular-webfont.ttf" />
     <Content Include="Content\fonts\Roboto-Regular-webfont.woff" />
-    <None Include="Properties\PublishProfiles\10.88.16.78.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Images\logo-main.png" />
     <Content Include="Scripts\bootstrap.js" />
