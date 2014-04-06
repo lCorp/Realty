@@ -26,8 +26,8 @@ namespace Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/site.css",
                         "~/Content/bootstrap.css",
-                        "~/Content/font-awesome/css/font-awesome.css",
-                        "~/Content/flag-icon-css-master/css/flag-icon.css"));
+                        "~/Content/font-awesome.css",
+                        "~/Content/flag-icon.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
