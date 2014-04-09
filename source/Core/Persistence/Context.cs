@@ -25,5 +25,6 @@ namespace Core.Persistence
         }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<MasterCode> MasterCodes { get; set; }
     }
 }

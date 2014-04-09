@@ -7,12 +7,6 @@ namespace Core.Models
 {
     public class Account : BaseEntity
     {
-        public Account()
-            : base()
-        {
-
-        }
-
         public string FullName { get; set; }
         public string NickName { get; set; }
         public bool IsConfirmed { get; set; }
@@ -24,5 +18,6 @@ namespace Core.Models
         public string PasswordVerificationToken { get; set; }
         public DateTime? PasswordVerificationTokenExpiration { get; set; }
         public DateTime? LastPasswordChangedDateTime { get; set; }
+        public string SessionToken { get; set; }
     }
 }

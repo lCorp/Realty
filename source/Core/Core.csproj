@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\CodeMaster.cs" />
     <Compile Include="Persistence\Configuration.cs" />
     <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

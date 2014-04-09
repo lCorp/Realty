@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container">
+    <div class="container body-content">
         <div class="web-header">
             @Html.Partial("_WebHeader")
         </div>
@@ -19,6 +19,7 @@
             @Html.Partial("_WebFooter")
         </div>
     </div>
+    @Html.Partial("_Social")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
