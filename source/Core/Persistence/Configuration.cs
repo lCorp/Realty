@@ -23,7 +23,7 @@ namespace Core.Persistence
 
             context.MasterCodes.AddOrUpdate(m => m.Id,
                 new MasterCode { Id = 1, Category = "Common", Code = "SiteName", Value = "MIỀN ĐẤT MỚI" },
-                new MasterCode { Id = 2, Category = "Common", Code = "SitesLogon", Value = "Niềm tin cho bạn" },
+                new MasterCode { Id = 2, Category = "Common", Code = "SiteSlogan", Value = "Niềm tin cho bạn" },
                 new MasterCode { Id = 1, Category = "Common", Code = "Hotline", Value = "+84 98 458 21 88" },
                 new MasterCode { Id = 1, Category = "Social", Code = "Email", Value = "ngohuuloc@gmail.com" },
                 new MasterCode { Id = 1, Category = "Social", Code = "Facebook", Value = "https://www.facebook.com/" },
