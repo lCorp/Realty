@@ -18,10 +18,10 @@ namespace Core.Persistence
 
         protected override void Seed(Context context)
         {
-            context.Accounts.AddOrUpdate(m => m.Id,
-                new Account { Id = 1, Name = "host", NickName = "Supper Admin", Password = CrytographyUtil.GetHash("host") });
+            context.AccountList.AddOrUpdate(m => m.Id,
+                new Account { Id = 1, Name = "host", Password = CrytographyUtil.GetHash("host") });
 
-            context.MasterCodes.AddOrUpdate(m => m.Id,
+            context.MasterCodeList.AddOrUpdate(m => m.Id,
                 new MasterCode { Id = 1, Category = "Common", Code = "SiteName", Value = "MIỀN ĐẤT MỚI" },
                 new MasterCode { Id = 2, Category = "Common", Code = "SiteSlogan", Value = "Niềm tin cho bạn" },
                 new MasterCode { Id = 1, Category = "Common", Code = "Hotline", Value = "+84 98 458 21 88" },

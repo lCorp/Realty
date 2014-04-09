@@ -7,8 +7,6 @@ namespace Core.Models
 {
     public class Account : BaseEntity
     {
-        public string FullName { get; set; }
-        public string NickName { get; set; }
         public bool IsConfirmed { get; set; }
         public string ConfirmationToken { get; set; }
         public DateTime? ConfirmationTokenExpiration { get; set; }

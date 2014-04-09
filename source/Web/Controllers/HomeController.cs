@@ -14,12 +14,12 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home";
-            return View(_context.Accounts);
+            return View(_context.AccountList);
         }
 
         public ActionResult Create(Account model)
         {
-            _context.Accounts.Add(model);
+            _context.AccountList.Add(model);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
