@@ -1,12 +1,14 @@
 ﻿body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    min-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: auto;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 1024px;
+    margin: 0 auto;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -43,21 +45,65 @@ input[type="checkbox"].input-validation-error {
 
 /*Customized style*/
 .web-header {
+    border: 1px solid #bebebe;
+    background-color: white;
+    width: 100% !important;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    -moz-box-shadow: 0px 4px 16px #333;
+    -webkit-box-shadow: 0px 4px 16px #333;
+    box-shadow: 0px 4px 16px #333;
 }
 
-.web-logo-main {
-    width: 100%;
+.mainHeaderFrame {
+    /*border: 1px solid black;*/
+    /*background: black;*/
+    height: 100px;
+    min-width: 1000px;
+    width: auto;
+    max-width: 1024px;
+    text-align: center;
+    margin: 10px auto;
 }
 
-.web-sitename {
-    color: #000 !important;
-}
+    .mainHeaderFrame .col25 {
+        min-width: 240px;
+        width: 24%;
+        border: 1px solid #bebebe;
+    }
 
-.web-slogon {
-}
+    .mainHeaderFrame .col50 {
+        min-width: 490px;
+        width: auto;
+        border: 1px solid #bebebe;
+    }
 
-.web-jumbotron-functions a {
-    margin-bottom: 8px;
+    .mainHeaderFrame .realtyLogo {
+        height: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .mainHeaderFrame .realtyInfo {
+        height: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .mainHeaderFrame .realtyLoginForm {
+        height: 100px;
+        overflow: hidden;
+    }
+
+.mainMenu {
+    border: 1px solid #bebebe;
+    background: #333;
+    height: 40px;
+    min-width: 1024px;
+    max-width: 1024px;
+    width: auto;
+    margin: 10px auto;
 }
 
 .web-social {
@@ -120,10 +166,80 @@ input[type="checkbox"].input-validation-error {
     }
 
 .web-body {
+    /*border: 1px solid blue;*/
+    background-color: #f2f2f2;
+    position: relative;
+    padding-bottom: 10px;
 }
 
+    .web-body .bodyContentTop {
+        width: 1024px;
+        height: 200px;
+        padding: 20px 0 10px 0;
+        margin: 0px auto;
+        position: relative;
+    }
+
+        .web-body .bodyContentTop .col25 {
+            min-width: 240px;
+            width: 24%;
+            border: 1px solid #bebebe;
+        }
+
+        .web-body .bodyContentTop .col25End {
+            min-width: 240px;
+            width: auto;
+            border: 1px solid #bebebe;
+        }
+
+        .web-body .bodyContentTop .col50 {
+            min-width: 490px;
+            width: 49%;
+            border: 1px solid #bebebe;
+        }
+
+        .web-body .bodyContentTop .bodyContentMainSearchingForm {
+            float: left;
+            height: 200px;
+            background: #fff;
+            margin-right: 10px;
+        }
+
+        .web-body .bodyContentTop .bodyContentSearchRealtyVip {
+            float: left;
+            height: 200px;
+            /*background: green;*/
+            margin-right: 10px;
+        }
+
+        .web-body .bodyContentTop .bodyContentRealtyVip {
+            height: 200px;
+            /*background: red;*/
+            overflow: hidden;
+        }
+
+    .web-body .bodyContentBottom {
+        min-height: 100px;
+        width: 1024px;
+        height: auto;
+        margin: 0 auto;
+        /*margin-bottom: 10px;*/
+        padding: 10px 0;
+        border: 1px solid #bebebe;
+        /*background: #b94a48;*/
+    }
+
 .web-footer {
+    width: 100%;
+    border: 1px solid #bebebe;
+    background: #bebebe;
 }
+
+    .web-footer .footer {
+        width: 100%;
+        height: 40px;
+        background: #bebebe;
+    }
 
 .web-glyphicon-blocks a,
 .web-glyphicon-blocks-o a,
@@ -232,3 +348,28 @@ input[type="checkbox"].input-validation-error {
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
+
+.clear {
+    clear: both;
+}
+
+.fullBoderRadius {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.topLeftRightBoderRadius {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-top-left-radius: 4px;
+    -moz-border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.boxShadowBoderBottom {
+    -moz-box-shadow: 0px 10px 11px #2b292b;
+    -webkit-box-shadow: 0px 10px 11px #2b292b;
+    box-shadow: 0px 10px 11px #2b292b;
+}

@@ -8,20 +8,38 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container body-content">
-        <div class="web-header">
-            @Html.Partial("_WebHeader")
-        </div>
+    <div class="web-header">
+        @Html.Partial("_WebHeader")
+    </div>
+
+    @*<div class="container body-content">*@
         <div class="web-body">
-            @RenderBody()
+            <div class="bodyContentTop">
+                <!--Searching form-->
+                <div class="bodyContentMainSearchingForm col25 topLeftRightBoderRadius">
+                    <div class="topLeftRightBoderRadius" style="width: auto; height: 30px; border: 1px solid #333; background-color: #333; text-align: center;">
+                        <img src="~/Images/iconHS.png" width="40" /><span style="color: white; line-height: 30px; font-weight: bold;">Công Cụ Tìm Kiếm</span>
+                    </div>
+                </div>
+                <div class="bodyContentSearchRealtyVip col50 topLeftRightBoderRadius">
+
+                </div>
+                <div class="bodyContentRealtyVip col25End topLeftRightBoderRadius">
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="bodyContentBottom">
+                @RenderBody()
+            </div>
         </div>
         <div class="web-footer">
             @Html.Partial("_WebFooter")
         </div>
-    </div>
-    @Html.Partial("_Social")
+    @*</div>*@
+    @*@Html.Partial("_Social")*@
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
