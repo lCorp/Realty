@@ -8,24 +8,29 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="web-header">
-        @Html.Partial("_WebHeader")
-    </div>
-
-    @*<div class="container body-content">*@
+    <div class="container body-content">
+        <div class="web-header">
+            @Html.Partial("_WebHeader")
+        </div>
         <div class="web-body">
             <div class="bodyContentTop">
                 <!--Searching form-->
                 <div class="bodyContentMainSearchingForm col25 topLeftRightBoderRadius">
-                    <div class="topLeftRightBoderRadius" style="width: auto; height: 30px; border: 1px solid #333; background-color: #333; text-align: center;">
-                        <img src="~/Images/iconHS.png" width="40" /><span style="color: white; line-height: 30px; font-weight: bold;">Công Cụ Tìm Kiếm</span>
+                    <div class="searchHeader topLeftRightBoderRadius">
+                        <img src="~/Images/iconHS.png" width="40" class="icon" alt="SearchHouseIcon" />
+                        <span>Công Cụ Tìm Kiếm</span>
                     </div>
                 </div>
                 <div class="bodyContentSearchRealtyVip col50 topLeftRightBoderRadius">
-
+                    <div class="realtySearchField">
+                        <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
+                        <div class="button fullBoderRadius"><i class="fa fa-search"></i></div>
+                    </div>
                 </div>
                 <div class="bodyContentRealtyVip col25End topLeftRightBoderRadius">
-
+                    <div class="realyVipInfo topLeftRightBoderRadius">
+                        <span>Bất Động Sản Siêu Vip</span>
+                    </div>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -36,7 +41,7 @@
         <div class="web-footer">
             @Html.Partial("_WebFooter")
         </div>
-    @*</div>*@
+    </div>
     @*@Html.Partial("_Social")*@
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
