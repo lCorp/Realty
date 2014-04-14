@@ -10,20 +10,27 @@ namespace Core.Utils
     public class CrytographyUtil
     {
         //For generate password
-        private static readonly RandomNumberGenerator passwordGenerator = RNGCryptoServiceProvider.Create();
+        private static readonly RandomNumberGenerator _passwordGenerator = RNGCryptoServiceProvider.Create();
+        private const string _hashName = "MD5";
 
         public static string GeneratePassword()
         {
             byte[] secureBits = new byte[64];
-            passwordGenerator.GetBytes(secureBits);
+            _passwordGenerator.GetBytes(secureBits);
             return Convert.ToBase64String(secureBits);
         }
 
-        public static string GetHash(string value)
+        public static string GetHashToString(string value)
         {
             byte[] bytes = Encoding.Unicode.GetBytes(value);
-            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            byte[] inArray = HashAlgorithm.Create(_hashName).ComputeHash(bytes);
             return Convert.ToBase64String(inArray);
+        }
+
+        public static byte[] GetHashToByte(string value)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(value);
+            return HashAlgorithm.Create(_hashName).ComputeHash(bytes);
         }
 
         public static Guid StringToGuid(string value)
@@ -32,10 +39,7 @@ namespace Core.Utils
             {
                 value = Guid.NewGuid().ToString();
             }
-            MD5 md5Hasher = MD5.Create();
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
-            return new Guid(data);
+            return new Guid(GetHashToByte(value));
         }
 
         //For encrypt and decrypt a string

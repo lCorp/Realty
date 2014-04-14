@@ -19,7 +19,7 @@ namespace Core.Persistence
         protected override void Seed(Context context)
         {
             context.AccountList.AddOrUpdate(m => m.Id,
-                new Account { Id = CrytographyUtil.StringToGuid(Constant.ACCOUNT_HOST_NAME), AccountName = Constant.ACCOUNT_HOST_NAME, Password = CrytographyUtil.GetHash(Constant.ACCOUNT_HOST_NAME) });
+                new Account { Id = CrytographyUtil.StringToGuid(Constant.ACCOUNT_HOST_NAME), AccountName = Constant.ACCOUNT_HOST_NAME, Password = CrytographyUtil.GetHashToString(Constant.ACCOUNT_HOST_NAME) });
 
             base.Seed(context);
         }

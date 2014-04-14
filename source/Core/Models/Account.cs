@@ -12,7 +12,8 @@ namespace Core.Models
         public int PasswordFailures { get; set; }
         public DateTime? LastPasswordFailure { get; set; }
         public string LastLoginToken { get; set; }
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
