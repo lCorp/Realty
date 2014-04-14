@@ -7,13 +7,13 @@
         <ul>
             @foreach (var account in Model)
             {
-                <li>@account.Name</li>
+                <li>@account.AccountName</li>
             }
         </ul>
 
         @using (Html.BeginForm("Create", "Home", FormMethod.Post))
         {
-            <input type="text" name="Name" />
+            <input type="text" name="AccountName" />
             <input type="submit" value="Submit" />
         }
     </div>
