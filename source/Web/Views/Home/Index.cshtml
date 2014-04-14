@@ -7,7 +7,7 @@
         <ul>
             @foreach (var account in Model)
             {
-                <li>@account.AccountName</li>
+                <li>@account.AccountName | @account.NickName | @account.Password</li>
             }
         </ul>
 
