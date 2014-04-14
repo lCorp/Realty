@@ -7,8 +7,7 @@ namespace Core.Models
 {
     public class AccountInRole : BaseEntity
     {
-        public int AccountId { get; set; }
-        public int AccountRoleId { get; set; }
-        public string RoleType { get; set; }
+        public Guid AccountId { get; set; }
+        public Guid AccountRoleId { get; set; }
     }
 }

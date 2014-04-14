@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Core.Models
 {
-    public class Tagging : BaseEntity
+    public class ArticleInTag : BaseEntity
     {
-
+        public Guid ArticleId { get; set; }
+        public Guid TaggingId { get; set; }
     }
 }

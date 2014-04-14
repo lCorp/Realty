@@ -7,15 +7,27 @@ namespace Core.Models
 {
     public class Account : BaseEntity
     {
-        public bool IsConfirmed { get; set; }
-        public string ConfirmationToken { get; set; }
-        public DateTime? ConfirmationTokenExpiration { get; set; }
+        public string AccountName { get; set; }
         public string Password { get; set; }
-        public int PasswordFailuresSinceLastSuccess { get; set; }
-        public DateTime? LastPasswordFailureDateTime { get; set; }
-        public string PasswordVerificationToken { get; set; }
-        public DateTime? PasswordVerificationTokenExpiration { get; set; }
-        public DateTime? LastPasswordChangedDateTime { get; set; }
-        public string SessionToken { get; set; }
+        public int PasswordFailures { get; set; }
+        public DateTime? LastPasswordFailure { get; set; }
+        public string LastLoginToken { get; set; }
+        public string FullName { get; set; }
+        public string NickName { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Mobile { get; set; }
+        public DateTime? Birthday { get; set; }
+        public string Gender { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string District { get; set; }
+        public string Ward { get; set; }
+        public string Street { get; set; }
+        public string HomeNumber { get; set; }
+        public string SkypeId { get; set; }
+        public string FacebookId { get; set; }
+        public string GooglePlusId { get; set; }
+        public string YahooId { get; set; }
     }
 }

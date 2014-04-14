@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,26 +48,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\AccountProfile.cs" />
+    <Compile Include="Models\AccountTransaction.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleAttachment.cs" />
     <Compile Include="Models\ArticleCategory.cs" />
     <Compile Include="Models\ArticleComment.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\CodeMaster.cs" />
-    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\ModuleInMenu.cs" />
     <Compile Include="Models\Module.cs" />
-    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\ModulePermission.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\AccountRole.cs" />
     <Compile Include="Models\AccountInRole.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\ProductAttachment.cs" />
-    <Compile Include="Models\ProductTagging.cs" />
-    <Compile Include="Models\ProductComment.cs" />
-    <Compile Include="Models\ArticleTagging.cs" />
-    <Compile Include="Models\Tagging.cs" />
+    <Compile Include="Models\ArticleInTag.cs" />
+    <Compile Include="Models\ArticleTag.cs" />
     <Compile Include="Persistence\Configuration.cs" />
+    <Compile Include="Persistence\Constant.cs" />
     <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\GlobalResource.Designer.cs">
@@ -74,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GlobalResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ConfigurationUtil.cs" />
     <Compile Include="Utils\CrytographyUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
   </ItemGroup>

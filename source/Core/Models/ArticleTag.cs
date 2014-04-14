@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Core.Models
 {
-    public class ProductCategory : BaseEntity
+    public class ArticleTag : BaseEntity
     {
-        public int MaxNumberOfAttachment { get; set; }
+        public string Category { get; set; }
+        public string TagName { get; set; }
     }
 }

@@ -9,10 +9,16 @@ namespace Core.Persistence
 {
     public class Context : DbContext
     {
-        private const string _defaultConnectionStringName = "DefaultConnection";
+        private const string _defaultConnectionName = Constant.DEFAULT_CONNECTION_NAME;
 
         public Context()
-            : base(_defaultConnectionStringName)
+            : base(_defaultConnectionName)
+        {
+
+        }
+
+        public Context(string connectionName)
+            : base(connectionName)
         {
 
         }
@@ -25,26 +31,23 @@ namespace Core.Persistence
         }
 
         public DbSet<MasterCode> MasterCodeList { get; set; }
-        public DbSet<Permission> PermissionList { get; set; }
+
         public DbSet<Module> ModuleList { get; set; }
-        public DbSet<Menu> MenuList { get; set; }
-        public DbSet<Tagging> TaggingList { get; set; }
+        public DbSet<ModuleInMenu> MenuList { get; set; }
+        public DbSet<ModulePermission> PermissionList { get; set; }
 
         public DbSet<Account> AccountList { get; set; }
-        public DbSet<AccountProfile> AccountProfileList { get; set; }
+        public DbSet<AccountTransaction> AccountTransactionList { get; set; }
         public DbSet<AccountRole> AccountRoleList { get; set; }
         public DbSet<AccountInRole> AccountInRoleList { get; set; }
 
         public DbSet<Article> ArticleList { get; set; }
-        public DbSet<ArticleTagging> ArticleTaggingList { get; set; }
-        public DbSet<ArticleCategory> ArticleCategoryList { get; set; }
         public DbSet<ArticleAttachment> ArticleAttachmentList { get; set; }
         public DbSet<ArticleComment> ArticleCommentList { get; set; }
+        public DbSet<ArticleTag> ArticleTagList { get; set; }
+        public DbSet<ArticleInTag> ArticleInTagList { get; set; }
+        public DbSet<ArticleCategory> ArticleCategoryList { get; set; }     
 
         public DbSet<Product> ProductList { get; set; }
-        public DbSet<ProductTagging> ProductTaggingList { get; set; }
-        public DbSet<ProductCategory> ProductCategoryList { get; set; }
-        public DbSet<ProductAttachment> ProductAttachmentList { get; set; }
-        public DbSet<ProductComment> ProductCommentList { get; set; }
     }
 }

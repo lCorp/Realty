@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Core.Models
 {
-    public class Permission : BaseEntity
+    public class ModulePermission : BaseEntity
     {
-        public int AccountRoleId { get; set; }
-        public int ModuleId { get; set; }
+        public Guid AccountRoleId { get; set; }
+        public Guid ModuleId { get; set; }
         public string PermissionType { get; set; }
     }
 }

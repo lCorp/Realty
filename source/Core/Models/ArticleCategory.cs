@@ -7,6 +7,8 @@ namespace Core.Models
 {
     public class ArticleCategory : BaseEntity
     {
-        public int MaxNumberOfAttachment { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryType { get; set; }
+        public int? MaxNumberOfAttachment { get; set; }
     }
 }

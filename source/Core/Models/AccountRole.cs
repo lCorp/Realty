@@ -7,6 +7,7 @@ namespace Core.Models
 {
     public class AccountRole : BaseEntity
     {
-        public int MaxNumberOfMember { get; set; }
+        public string RoleName { get; set; }
+        public int? MaxNumberOfMember { get; set; }
     }
 }

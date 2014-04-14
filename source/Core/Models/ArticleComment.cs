@@ -7,8 +7,8 @@ namespace Core.Models
 {
     public class ArticleComment : BaseEntity
     {
-        public int ArticleId { get; set; }
-        public int ReplyForId { get; set; }
+        public Guid ArticleId { get; set; }
+        public Guid? ReplyForId { get; set; }
         public string Content { get; set; }
     }
 }
