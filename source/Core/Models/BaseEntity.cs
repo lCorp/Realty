@@ -11,11 +11,11 @@ namespace Core.Models
     {
         public BaseEntity()
         {
+            Id = Guid.NewGuid();
             CreatedDateTime = DateTime.Now;
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
