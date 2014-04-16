@@ -21,7 +21,6 @@ namespace Web.Controllers
         public ActionResult Create(Account model)
         {
             model.Password = CrytographyUtil.GetHashToString(CrytographyUtil.GeneratePassword());
-            model.Id = CrytographyUtil.StringToGuid(model.AccountName);
             model.NickName = CrytographyUtil.StringToGuid(model.AccountName).ToString();
             _context.AccountList.Add(model);
             _context.SaveChanges();

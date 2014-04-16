@@ -8,9 +8,9 @@ namespace Core.Models
     public class Product : BaseEntity
     {
         public Guid ArticleId { get; set; }
-        public string ProductTypeCode { get; set; }
-        public string ProviderTypeCode { get; set; }
-        public string ProductModelCode { get; set; }
+        public string ProductType { get; set; }
+        public string ProviderType { get; set; }
+        public string ProductModel { get; set; }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
         public decimal UomPrice { get; set; }
