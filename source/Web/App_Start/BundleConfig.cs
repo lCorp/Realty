@@ -24,8 +24,12 @@ namespace Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/site.css",
-                        //"~/Content/bootstrap.css",
+                        "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                        "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/Content/icon").Include(
                         "~/Content/font-awesome.css",
                         "~/Content/flag-icon.css"));
 
