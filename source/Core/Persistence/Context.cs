@@ -30,7 +30,7 @@ namespace Core.Persistence
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<MasterCode> MasterCodeList { get; set; }
+        public DbSet<CodeMaster> CodeMasterList { get; set; }
 
         public DbSet<Module> ModuleList { get; set; }
         public DbSet<ModuleInMenu> MenuList { get; set; }

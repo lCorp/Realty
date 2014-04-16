@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Models
 {
-    public class MasterCode : BaseEntity
+    public class CodeMaster : BaseEntity
     {
         public string Category { get; set; }
         public string Code { get; set; }
