@@ -55,6 +55,7 @@ input[type="checkbox"].input-validation-error {
     text-align: center;
     /*padding: 10px 0;*/
     margin: 10px auto;
+    margin-bottom: 0;
     /*margin-bottom: 5px;*/
     /*-moz-box-shadow: 0px 4px 16px #333;*/
     /*-webkit-box-shadow: 0px 4px 16px #333;*/
@@ -187,7 +188,7 @@ input[type="checkbox"].input-validation-error {
         width: 970px;
         min-height: 200px;
         height: auto;
-        padding: 20px 0 10px 0;
+        padding: 0 0 10px 0;
         margin: 0px auto;
         position: relative;
     }
@@ -202,13 +203,27 @@ input[type="checkbox"].input-validation-error {
             border: 1px solid #bebebe;
         }
 
+        .web-body .bodyContentTop .col40 {
+            width: 39%;
+            border: 1px solid #bebebe;
+        }
+
         .web-body .bodyContentTop .col50 {
             width: 49%;
             border: 1px solid #bebebe;
         }
 
+        .web-body .bodyContentTop .col60 {
+            width: 59%;
+            border: 1px solid #bebebe;
+        }
+
+        .web-body .bodyContentTop .col75 {
+            width: 75%;
+            border: 1px solid #bebebe;
+        }
+
         .web-body .bodyContentTop .spvContentFrm {
-            border: 1px solid #ccc;
             width: 100%;
             height: 140px;
             margin-bottom: 10px;
@@ -217,7 +232,7 @@ input[type="checkbox"].input-validation-error {
             .web-body .bodyContentTop .spvContentFrm ul {
                 padding: 0;
                 margin: 0;
-                /*letter-spacing: -4px;*/
+                letter-spacing: -4px;
                 font-size: 12px;
                 position: relative;
                 z-index: 0;
@@ -225,93 +240,115 @@ input[type="checkbox"].input-validation-error {
 
                 .web-body .bodyContentTop .spvContentFrm ul li {
                     display: inline-block;
-                    padding: 0 3px;
-                    border-right: 1px solid #e7e7e7;
                     margin: 0;
                     letter-spacing: normal;
                     white-space: normal;
                     vertical-align: top;
-                    width: 16%;
+                    width: 20%;
                     height: 140px;
                 }
 
-                .web-body .bodyContentTop .spvContentFrm ul > li:first-child,
-                .web-body .bodyContentTop .spvContentFrm ul > li:first-child a {
+                    .web-body .bodyContentTop .spvContentFrm ul li > div {
+                        border: 1px solid #ccc;
+                        border-width: 1px 1px 1px 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .web-body .bodyContentTop .spvContentFrm ul > li:first-child > div {
                     -webkit-border-radius: 4px 0 0 4px;
                     -moz-border-radius: 4px 0 0 4px;
                     border-radius: 4px 0 0 4px;
+                    border-left: 1px solid #ccc;
                 }
 
-        .web-body .bodyContentTop .bodyContentMainSearchingForm {
-            float: left;
-            height: 200px;
-            background: #fff;
-            margin-right: 1%;
+                .web-body .bodyContentTop .spvContentFrm ul > li:last-child > div {
+                    /*-webkit-border-radius: 4px 0 0 4px;
+                    -moz-border-radius: 4px 0 0 4px;
+                    border-radius: 4px 0 0 4px;*/
+                    -webkit-border-radius: 0 4px 4px 0;
+                    -moz-border-radius: 0 4px 4px 0;
+                    border-radius: 0 4px 4px 0;
+                    /*overflow: hidden;
+                    border: none;*/
+                }
+
+        .web-body .bodyContentTop .outerFrame {
+            margin-bottom: 10px;
+            /*border: 1px solid #ccc;*/
+            width: 970px;
         }
 
-            .web-body .bodyContentTop .bodyContentMainSearchingForm .searchHeader {
-                width: auto;
-                height: 30px;
-                border: 1px solid #333;
-                background-color: #bebebe;
-                text-align: center;
-                position: relative;
+            .web-body .bodyContentTop .outerFrame .bodyContentMainSearchingForm {
+                float: left;
+                height: 200px;
+                background: #fff;
+                margin-right: 1%;
             }
 
-                .web-body .bodyContentTop .bodyContentMainSearchingForm .searchHeader > span {
-                    color: white;
-                    line-height: 30px;
-                    font-weight: bold;
+                .web-body .bodyContentTop .outerFrame .bodyContentMainSearchingForm .searchHeader {
+                    width: auto;
+                    height: 30px;
+                    border: 1px solid #333;
+                    background-color: #bebebe;
+                    text-align: center;
+                    position: relative;
                 }
 
-                .web-body .bodyContentTop .bodyContentMainSearchingForm .searchHeader img.icon {
-                    position: absolute;
-                    top: -10px;
-                    left: 5px;
-                }
+                    .web-body .bodyContentTop .outerFrame .bodyContentMainSearchingForm .searchHeader > span {
+                        color: white;
+                        line-height: 30px;
+                        font-weight: bold;
+                    }
 
-        .web-body .bodyContentTop .bodyContentSearchRealtyVip {
-            float: left;
-            height: 200px;
-            /*background: green;*/
-        }
+                    .web-body .bodyContentTop .outerFrame .bodyContentMainSearchingForm .searchHeader img.icon {
+                        position: absolute;
+                        top: -10px;
+                        left: 5px;
+                    }
 
-            .web-body .bodyContentTop .bodyContentSearchRealtyVip .realtySearchField {
-                width: 99%;
-                height: 30px;
-                margin: 0 auto;
+            .web-body .bodyContentTop .outerFrame .bodyContentSearchRealtyVip {
+                float: left;
+                height: 200px;
+                /*background: green;*/
             }
 
-                .web-body .bodyContentTop .bodyContentSearchRealtyVip .realtySearchField input[type=text] {
-                    border: 1px solid #bebebe;
-                    line-height: 20px;
-                    width: 80%;
-                    max-width: 80%;
-                    outline: none;
-                    padding: 4px;
+                .web-body .bodyContentTop .outerFrame .bodyContentSearchRealtyVip .realtySearchField {
+                    width: 99%;
+                    height: 30px;
+                    margin: 0 auto;
                 }
 
-        .web-body .bodyContentTop .bodyContentRealtyVip {
-            height: 200px;
-            float: right;
-            /*background: red;*/
-            /*overflow: hidden;*/
-        }
+                    .web-body .bodyContentTop .outerFrame .bodyContentSearchRealtyVip .realtySearchField input[type=text] {
+                        border: 1px solid #bebebe;
+                        line-height: 20px;
+                        width: 80%;
+                        max-width: 80%;
+                        outline: none;
+                        padding: 4px;
+                    }
 
-            .web-body .bodyContentTop .bodyContentRealtyVip .realyVipInfo {
-                width: auto;
-                height: 30px;
-                border: 1px solid #333;
-                background-color: #bebebe;
-                text-align: center;
-                position: relative;
+            .web-body .bodyContentTop .outerFrame .bodyContentRealtyVip {
+                height: 200px;
+                float: right;
+                /*background: red;*/
+                /*overflow: hidden;*/
             }
 
-                .web-body .bodyContentTop .bodyContentRealtyVip .realyVipInfo > span {
-                    color: white;
-                    line-height: 30px;
-                    font-weight: bold;
+                .web-body .bodyContentTop .outerFrame .bodyContentRealtyVip .realyVipInfo {
+                    width: auto;
+                    height: 30px;
+                    border: 1px solid #333;
+                    background-color: #bebebe;
+                    text-align: center;
+                    position: relative;
                 }
+
+                    .web-body .bodyContentTop .outerFrame .bodyContentRealtyVip .realyVipInfo > span {
+                        color: white;
+                        line-height: 30px;
+                        font-weight: bold;
+                    }
 
     .web-body .bodyContentBottom {
         min-height: 100px;
