@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="CodeMaster_View_Button_Create" xml:space="preserve">
+    <value>Tạo Mới</value>
+  </data>
+  <data name="CodeMaster_View_Title" xml:space="preserve">
+    <value>Danh Mục Chung</value>
   </data>
 </root>

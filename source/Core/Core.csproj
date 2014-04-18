@@ -53,8 +53,16 @@
     <Compile Include="Models\ArticleAttachment.cs" />
     <Compile Include="Models\ArticleCategory.cs" />
     <Compile Include="Models\ArticleComment.cs" />
+    <Compile Include="Models\Banner.cs" />
+    <Compile Include="Models\BannerAgent.cs" />
+    <Compile Include="Models\BannerCampaign.cs" />
+    <Compile Include="Models\BannerInZone.cs" />
+    <Compile Include="Models\BannerOwner.cs" />
+    <Compile Include="Models\BannerTracking.cs" />
+    <Compile Include="Models\BannerZone.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\CodeMaster.cs" />
+    <Compile Include="Models\Localization.cs" />
     <Compile Include="Models\ModuleInMenu.cs" />
     <Compile Include="Models\Module.cs" />
     <Compile Include="Models\ModulePermission.cs" />
@@ -79,7 +87,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\GlobalResource.vi-VN.resx" />
     <EmbeddedResource Include="Resources\GlobalResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>

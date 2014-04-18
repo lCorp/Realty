@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using Core.Constant;
 
 namespace Core.Persistence
 {
     public class Context : DbContext
     {
-        private const string _defaultConnectionName = Constant.DEFAULT_CONNECTION_NAME;
+        private const string _defaultConnectionName = GlobalConstant.DEFAULT_CONNECTION_NAME;
 
         public Context()
             : base(_defaultConnectionName)
@@ -31,10 +32,11 @@ namespace Core.Persistence
         }
 
         public DbSet<CodeMaster> CodeMasterList { get; set; }
+        public DbSet<Localization> LocalizationList { get; set; }
 
         public DbSet<Module> ModuleList { get; set; }
-        public DbSet<ModuleInMenu> MenuList { get; set; }
-        public DbSet<ModulePermission> PermissionList { get; set; }
+        public DbSet<ModuleInMenu> ModuleInMenuList { get; set; }
+        public DbSet<ModulePermission> ModulePermissionList { get; set; }
 
         public DbSet<Account> AccountList { get; set; }
         public DbSet<AccountTransaction> AccountTransactionList { get; set; }
@@ -49,5 +51,13 @@ namespace Core.Persistence
         public DbSet<ArticleCategory> ArticleCategoryList { get; set; }     
 
         public DbSet<Product> ProductList { get; set; }
+
+        public DbSet<Banner> BannerList { get; set; }
+        public DbSet<BannerCampaign> BannerCampaignList { get; set; }
+        public DbSet<BannerZone> BannerZoneList { get; set; }
+        public DbSet<BannerInZone> BannerInZoneList { get; set; }
+        public DbSet<BannerTracking> BannerTrackingList { get; set; }
+        public DbSet<BannerOwner> BannerOwnerList { get; set; }
+        public DbSet<BannerAgent> BannerAgentList { get; set; }
     }
 }

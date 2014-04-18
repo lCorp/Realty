@@ -12,6 +12,7 @@ namespace Core.Models
         public int PasswordFailures { get; set; }
         public DateTime? LastPasswordFailure { get; set; }
         public string LastLoginToken { get; set; }
+        public string LanguageCulture { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string NickName { get; set; }
