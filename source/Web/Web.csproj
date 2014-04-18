@@ -50,6 +50,12 @@
       <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.0\lib\net40\EntityFramework.SqlServerCompact.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -195,6 +201,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CodeMasterController.cs" />
+    <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +217,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\flag-icon.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -725,6 +734,13 @@
     <Content Include="Views\Shared\_WebHeader.cshtml" />
     <Content Include="Views\Shared\_WebFooter.cshtml" />
     <Content Include="Views\Shared\_Social.cshtml" />
+    <Content Include="Views\Shared\_BackEndLayout.cshtml" />
+    <Content Include="Views\CodeMaster\Create.cshtml" />
+    <Content Include="Views\CodeMaster\Delete.cshtml" />
+    <Content Include="Views\CodeMaster\Details.cshtml" />
+    <Content Include="Views\CodeMaster\Edit.cshtml" />
+    <Content Include="Views\CodeMaster\Index.cshtml" />
+    <Content Include="Views\Culture\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

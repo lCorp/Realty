@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackEndLayout.cshtml";
+}
+
+<h2>Language Culture</h2>
+<p>Select your language culture</p>
+<ul>
+    <li>
+        @Html.ActionLink("Tiếng Việt", "ChangeCulture", "Culture", new { lang = "vi", returnUrl = ViewBag.ReturnUrl }, null)
+    </li>
+    <li>
+        @Html.ActionLink("English", "ChangeCulture", "Culture", new { lang = "en", returnUrl = ViewBag.ReturnUrl }, null)
+    </li>
+</ul>
