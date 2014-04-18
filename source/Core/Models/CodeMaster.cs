@@ -17,7 +17,7 @@ namespace Core.Models
 
         #region Methods
 
-        public static string GetCode(string codeMasterType, string codeMasterCode, string languageCulture)
+        public static string GetValue(string codeMasterType, string codeMasterCode, string languageCulture)
         {
             using (Context context = new Context())
             {
@@ -30,6 +30,35 @@ namespace Core.Models
                 return result;
             }
         }
+
+        public static string GetValue(string codeMasterType, string codeMasterCode)
+        {
+            using (Context context = new Context())
+            {
+                string result = string.Empty;
+                CodeMaster codeMaster = context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == codeMasterType && m.CodeMasterCode == codeMasterCode);
+                if (codeMaster != null)
+                {
+                    result = codeMaster.CodeMasterValue;
+                }
+                return result;
+            }
+        }
+
+        public static string GetLocalizedValue(string codeMasterType, string codeMasterCode)
+        {
+            using (Context context = new Context())
+            {
+                string result = string.Empty;
+                CodeMaster codeMaster = context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == codeMasterType && m.CodeMasterCode == codeMasterCode);
+                if (codeMaster != null)
+                {
+                    result = codeMaster.LocalizedValue;
+                }
+                return result;
+            }
+        }
+
         #endregion
     }
 }

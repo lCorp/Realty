@@ -28,8 +28,8 @@ namespace Core.Persistence
                 new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Common|WebsiteName"), CodeMasterType = "Common", CodeMasterCode = "WebsiteName", CodeMasterValue = "Miền Đất Mới" });
 
             context.CodeMasterList.AddOrUpdate(m => m.Id,
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|en-US"), CodeMasterType = "Culture", CodeMasterCode = "en-US", CodeMasterValue = "English-US", LocalizedValue ="English - US" },
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|vi-VN"), CodeMasterType = "Culture", CodeMasterCode = "vi-VN", CodeMasterValue = "Vietnames-VN", LocalizedValue="Tiếng Việt - VN" });
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|en-US"), CodeMasterType = "Culture", CodeMasterCode = "en-US", CodeMasterValue = "English-US", LocalizedValue ="English" },
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|vi-VN"), CodeMasterType = "Culture", CodeMasterCode = "vi-VN", CodeMasterValue = "Vietnames-VN", LocalizedValue="Tiếng Việt" });
 
             //Module
             context.ModuleList.AddOrUpdate(m => m.Id,
@@ -42,7 +42,7 @@ namespace Core.Persistence
             //Mennu Back End
             context.ModuleInMenuList.AddOrUpdate(m => m.Id,
                 new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageProduct"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Bất Động Sản", ModuleId = CrytographyUtil.StringToGuid("Module:Product|Index"), Level = 0, Ordinal = 0 },
-                new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageArticle"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Tin Tức | Bài Viết", ModuleId = CrytographyUtil.StringToGuid("Module:Article|Index"), Level = 0, Ordinal = 1 },
+                new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageArticle"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Bài Viết", ModuleId = CrytographyUtil.StringToGuid("Module:Article|Index"), Level = 0, Ordinal = 1 },
                 new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageAccount"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Người Dùng", ModuleId = CrytographyUtil.StringToGuid("Module:Account|Index"), Level = 0, Ordinal = 2 },
                 new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Danh Mục Chung", ModuleId = CrytographyUtil.StringToGuid("Module:CodeMaster|Index"), Level = 4, Ordinal = 3 },
                 new ModuleInMenu { Id = CrytographyUtil.StringToGuid("Menu:ManageMenu"), Type = "ModuleBased", MenuCategory = "BackEnd", MenuName = "Tùy Chỉnh Mennu", ModuleId = CrytographyUtil.StringToGuid("Module:Menu|Index"), Level = 0, Ordinal = 5 });
@@ -51,9 +51,9 @@ namespace Core.Persistence
             context.LocalizationList.AddOrUpdate(m => m.Id,
                 new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageProduct|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "vi-VN", Value = "Bất Động Sản" },
                 new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageProduct|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "en-US", Value = "Real Estate" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "vi-VN", Value = "Tin Tức | Bài Viết" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "en-US", Value = "News | Article" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageAccount|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "vi-VN", Value = "Tài Khoản Người Dùng" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "vi-VN", Value = "Bài Viết" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "en-US", Value = "Article" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageAccount|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "vi-VN", Value = "Người Dùng" },
                 new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageAccount|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "en-US", Value = "User Account" },
                 new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageCodeMaster|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "vi-VN", Value = "Danh Mục Chung" },
                 new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageCodeMaster|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "en-US", Value = "Master Data" },

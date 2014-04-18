@@ -72,7 +72,7 @@
     <Compile Include="Models\ArticleInTag.cs" />
     <Compile Include="Models\ArticleTag.cs" />
     <Compile Include="Persistence\Configuration.cs" />
-    <Compile Include="Persistence\Constant.cs" />
+    <Compile Include="Constant\Constant.cs" />
     <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\GlobalResource.Designer.cs">
@@ -98,6 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extentions\" />
+    <Folder Include="Resources\Models\CodeMaster\" />
+    <Folder Include="Resources\Views\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
