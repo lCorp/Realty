@@ -17,67 +17,35 @@
             <div class="bodyContentTop">
                 <!--realty content super vip-->
                 <div class="spvContentFrm">
-                    <ul>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                        <li>
-                            <div></div>
-                        </li>
-                    </ul>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
                 <div class="clear"></div>
                 <!--Searching form-->
                 <div class="outerFrame">
-                    <div class="bodyContentMainSearchingForm col60 topLeftRightBoderRadius">
-
-                    </div>
-                    <div class="bodyContentRealtyVip col40 topLeftRightBoderRadius">
-                        <div class="realyVipInfo topLeftRightBoderRadius">
-                            <span>Bất Động Sản Siêu Vip</span>
+                    <div class="innerFrame">
+                        <div class="contentLeft">
+                            @RenderBody()
                         </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="outerFrame">
-                    <div class="bodyContentMainSearchingForm col25 topLeftRightBoderRadius">
-                        <div class="searchHeader topLeftRightBoderRadius">
-                            <img src="~/Images/iconHS.png" width="40" class="icon" alt="SearchHouseIcon" />
-                            <span>Công Cụ Tìm Kiếm</span>
-                        </div>
-                    </div>
-                    <div class="bodyContentSearchRealtyVip col50 topLeftRightBoderRadius">
-                        <div class="realtySearchField">
+                        <div class="contentRight">
                             <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
                             <div class="button fullBoderRadius"><i class="fa fa-search"></i></div>
                         </div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="bodyContentRealtyVip col25End topLeftRightBoderRadius">
-                        <div class="realyVipInfo topLeftRightBoderRadius">
-                            <span>Bất Động Sản Siêu Vip</span>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
                 </div>
             </div>
             <div class="bodyContentBottom">
-                @RenderBody()
             </div>
         </div>
         <div class="web-footer">
             @Html.Partial("_WebFooter")
         </div>
     </div>
-    @*@Html.Partial("_Social")*@
+    @Html.Partial("_Social")
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
