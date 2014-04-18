@@ -38,18 +38,10 @@ namespace Web
             }
             else
             {
-                string languageSession = (string)Session["lang"];
-                if (!string.IsNullOrEmpty(languageSession))
+                string[] userLanguages = HttpContext.Current.Request.UserLanguages;
+                if (userLanguages != null && userLanguages.Count() > 0)
                 {
-                    cultureName = languageSession;
-                }
-                else
-                {
-                    string[] userLanguages = HttpContext.Current.Request.UserLanguages;
-                    if (userLanguages != null && userLanguages.Count() > 0)
-                    {
-                        cultureName = userLanguages[0];
-                    }
+                    cultureName = userLanguages[0];
                 }
             }
             CultureInfo cultureInfo = new CultureInfo(cultureName);

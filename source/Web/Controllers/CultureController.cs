@@ -17,7 +17,6 @@ namespace Web.Controllers
         public ActionResult ChangeCulture(string lang, string returnUrl)
         {
             var langCookie = new HttpCookie("lang", lang) { HttpOnly = true };
-            Response.AppendCookie(langCookie);
             Session["lang"] = lang;
             return Redirect(returnUrl);
         }
