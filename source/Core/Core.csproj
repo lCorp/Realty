@@ -76,7 +76,6 @@
     <Compile Include="Utils\CrytographyUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\GlobalResource.vi-VN.resx" />
     <EmbeddedResource Include="Resources\GlobalResource.resx">
@@ -88,6 +87,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extentions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

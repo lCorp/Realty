@@ -13,6 +13,7 @@ namespace Core.Models
         {
             Id = Guid.NewGuid();
             CreatedDateTime = DateTime.Now;
+            LastUpdatedDateTime = DateTime.Now;
         }
 
         [Key]
@@ -22,6 +23,6 @@ namespace Core.Models
         public int? CreatedBy { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public int? LastUpdatedBy { get; set; }
-        public DateTime? LastUpdatedDateTime { get; set; }
+        public DateTime LastUpdatedDateTime { get; set; }
     }
 }
