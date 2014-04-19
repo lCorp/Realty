@@ -39,7 +39,7 @@ namespace Core.Models
                 Module module = _context.ModuleList.FirstOrDefault(m => m.Id == this.ModuleId);
                 if (module != null)
                 {
-                    result = string.Format("{0}/{1}/{2}", module.ControllerName, module.ActionName, this.Parameter);
+                    result = string.Format("~/{0}/{1}/{2}", module.ControllerName, module.ActionName, this.Parameter);
                 }
             }
             else if (this.Type == "UrlBased")
@@ -47,6 +47,11 @@ namespace Core.Models
                 result = this.TargetUrl;
             }
             return result;
+        }
+
+        public string GetMenuLocalizedName(string languageCulture)
+        {
+            return GetLocalizedValue(this.Id, languageCulture, this.MenuName);
         }
 
         #endregion

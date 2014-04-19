@@ -45,7 +45,7 @@ namespace Core.Models
 
         public static string GetLocalizedValue(Guid recordId, string languageCulture, string defaultValue)
         {
-            string result = GetLocalizedValue(recordId, languageCulture);
+            string result = BaseEntity.GetLocalizedValue(recordId, languageCulture);
             if (string.IsNullOrEmpty(result))
             {
                 result = defaultValue;

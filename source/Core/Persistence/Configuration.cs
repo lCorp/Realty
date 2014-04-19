@@ -21,15 +21,20 @@ namespace Core.Persistence
         {
             //Account
             context.AccountList.AddOrUpdate(m => m.Id,
-                new Account { Id = CrytographyUtil.StringToGuid("Account:" + GlobalConstant.ACCOUNT_HOST_NAME), AccountName = GlobalConstant.ACCOUNT_HOST_NAME, Password = CrytographyUtil.GetHashToString(GlobalConstant.ACCOUNT_HOST_NAME) });
+                new Account { Id = CrytographyUtil.StringToGuid("Account:" + GlobalConstant.ACCOUNT_HOST_NAME), AccountName = GlobalConstant.ACCOUNT_HOST_NAME, Password = CrytographyUtil.GetHashToString(GlobalConstant.ACCOUNT_HOST_NAME), LanguageCulture = "vi-VN" });
 
             //CodeMaster
             context.CodeMasterList.AddOrUpdate(m => m.Id,
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Common|WebsiteName"), CodeMasterType = "Common", CodeMasterCode = "WebsiteName", CodeMasterValue = "Miền Đất Mới" });
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Common|WebsiteName"), CodeMasterType = "Common", CodeMasterCode = "WebsiteName", CodeMasterValue = "Miền Đất Mới", LocalizedValue = "Miền Đất Mới" });
 
             context.CodeMasterList.AddOrUpdate(m => m.Id,
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|en-US"), CodeMasterType = "Culture", CodeMasterCode = "en-US", CodeMasterValue = "English-US", LocalizedValue ="English" },
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|vi-VN"), CodeMasterType = "Culture", CodeMasterCode = "vi-VN", CodeMasterValue = "Vietnames-VN", LocalizedValue="Tiếng Việt" });
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|en-US"), CodeMasterType = "Culture", CodeMasterCode = "en-US", CodeMasterValue = "English", LocalizedValue = "English" },
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:Culture|vi-VN"), CodeMasterType = "Culture", CodeMasterCode = "vi-VN", CodeMasterValue = "Vietnames", LocalizedValue = "Tiếng Việt" });
+
+            context.CodeMasterList.AddOrUpdate(m => m.Id,
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), CodeMasterType = "EditableCode", CodeMasterCode = "Country", CodeMasterValue = "Country", LocalizedValue = "Quốc Gia", Level = 0, Ordinal = 0 },
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), ParentId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), CodeMasterType = "EditableCode", CodeMasterCode = "City", CodeMasterValue = "City", LocalizedValue = "Tỉnh | Thành Phố", Level = 1, Ordinal = 1 },
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|District"), ParentId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), CodeMasterType = "EditableCode", CodeMasterCode = "District", CodeMasterValue = "Ward", LocalizedValue = "Quận | Huyện", Level = 2, Ordinal = 2 });
 
             //Module
             context.ModuleList.AddOrUpdate(m => m.Id,
@@ -49,16 +54,24 @@ namespace Core.Persistence
 
             //Localization
             context.LocalizationList.AddOrUpdate(m => m.Id,
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageProduct|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "vi-VN", Value = "Bất Động Sản" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageProduct|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "en-US", Value = "Real Estate" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "vi-VN", Value = "Bài Viết" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageArticle|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "en-US", Value = "Article" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageAccount|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "vi-VN", Value = "Người Dùng" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageAccount|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "en-US", Value = "User Account" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageCodeMaster|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "vi-VN", Value = "Danh Mục Chung" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageCodeMaster|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "en-US", Value = "Master Data" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageMenu|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageMenu"), LanguageCulture = "vi-VN", Value = "Tùy Chỉnh Menu" },
-                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu|ManageMenu|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageMenu"), LanguageCulture = "en-US", Value = "Menu Configuration" });
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageProduct|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "vi-VN", Value = "Bất Động Sản" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageProduct|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageProduct"), LanguageCulture = "en-US", Value = "Real Estate" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageArticle|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "vi-VN", Value = "Bài Viết" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageArticle|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageArticle"), LanguageCulture = "en-US", Value = "Article" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageAccount|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "vi-VN", Value = "Người Dùng" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageAccount|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageAccount"), LanguageCulture = "en-US", Value = "User Account" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageCodeMaster|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "vi-VN", Value = "Danh Mục Chung" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageCodeMaster|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageCodeMaster"), LanguageCulture = "en-US", Value = "Master Data" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageMenu|vi-VN"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageMenu"), LanguageCulture = "vi-VN", Value = "Tùy Chỉnh Menu" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:Mennu:ManageMenu|en-US"), RecordId = CrytographyUtil.StringToGuid("Menu:ManageMenu"), LanguageCulture = "en-US", Value = "Menu Configuration" });
+
+            context.LocalizationList.AddOrUpdate(m => m.Id,
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|Country|vi-VN"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), LanguageCulture = "vi-VN", Value = "Quốc Gia" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|Country|en-US"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), LanguageCulture = "en-US", Value = "Country" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|City|vi-VN"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), LanguageCulture = "vi-VN", Value = "Tỉnh | Thành Phố" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|City|en-US"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), LanguageCulture = "en-US", Value = "City" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|District|vi-VN"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|District"), LanguageCulture = "vi-VN", Value = "Quận | Huyện" },
+                new Localization { Id = CrytographyUtil.StringToGuid("Localization:CodeMaster:EditableCode|District|en-US"), RecordId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|District"), LanguageCulture = "en-US", Value = "District" });
 
             base.Seed(context);
         }

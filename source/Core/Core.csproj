@@ -72,13 +72,23 @@
     <Compile Include="Models\ArticleInTag.cs" />
     <Compile Include="Models\ArticleTag.cs" />
     <Compile Include="Persistence\Configuration.cs" />
-    <Compile Include="Constant\Constant.cs" />
+    <Compile Include="Constant\GlobalConstant.cs" />
     <Compile Include="Persistence\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\GlobalResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GlobalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\CodeMaster\CodeMasterViewResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeMasterViewResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Culture\CultureViewResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CultureViewResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\ConfigurationUtil.cs" />
     <Compile Include="Utils\CrytographyUtil.cs" />
@@ -91,6 +101,16 @@
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\CodeMaster\CodeMasterViewResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodeMasterViewResource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\CodeMaster\CodeMasterViewResource.vi-VN.resx" />
+    <EmbeddedResource Include="Resources\Views\Culture\CultureViewResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CultureViewResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Culture\CultureViewResource.vi-VN.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
