@@ -31,11 +31,29 @@ namespace Web
         protected void Application_AcquireRequestState(object sender, EventArgs e)
         {
             string cultureName = GlobalConstant.DEFAULT_CULTURE_NAME;
+            //Get culture from cookies
             HttpCookie languageCookie = HttpContext.Current.Request.Cookies["lang"];
             if (languageCookie != null)
             {
                 cultureName = languageCookie.Value;
             }
+            //Get culture based on user account setting
+            else if (User.Identity.IsAuthenticated)
+            {
+                using (Core.Persistence.Context context = new Core.Persistence.Context())
+                {
+                    Core.Models.Account account = context.AccountList.FirstOrDefault(m => m.AccountName == User.Identity.Name);
+                    if (account != null && !string.IsNullOrEmpty(account.LanguageCulture))
+                    {
+                        cultureName = account.LanguageCulture;
+                        //Write this setting to cookies for better performance in next request
+                        HttpCookie langCookie = new HttpCookie("lang", cultureName) { HttpOnly = true };
+                        langCookie.Expires = DateTime.Now.AddYears(100);
+                        Response.AppendCookie(langCookie);
+                    }
+                }
+            }
+            //Get culture by client browser
             else
             {
                 string[] userLanguages = HttpContext.Current.Request.UserLanguages;

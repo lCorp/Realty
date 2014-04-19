@@ -3,26 +3,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Core.Persistence;
-using Core.Models;
 using System.Net;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity;
 using PagedList;
 using PagedList.Mvc;
 using Core.Resources;
+using Core.Persistence;
+using Core.Constant;
+using Core.Models;
 
 namespace Web.Controllers
 {
     public class CodeMasterController : Controller
     {
-        private Context _context = new Context();
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        private readonly Context _context = new Context();
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, string currentCodeType, string codeType, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.IdSortParm = sortOrder == "id_asc" ? "id_desc" : "id_asc";
             ViewBag.ValueSortParm = sortOrder == "value_asc" ? "value_desc" : "value_asc";
             ViewBag.DateSortParm = sortOrder == "date_asc" ? "date_desc" : "date_asc";
+
+            if (codeType != null)
+            {
+                page = 1;
+                CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == codeType && m.CodeMasterType == "EditableCode");
+                if (codeMaster == null)
+                {
+                    codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
+                }
+                if (codeMaster != null)
+                {
+                    codeType = codeMaster.CodeMasterCode;
+                }
+            }
+            else
+            {
+                CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == currentCodeType && m.CodeMasterType == "EditableCode");
+                if (codeMaster == null)
+                {
+                    codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
+                }
+                if (codeMaster != null)
+                {
+                    currentCodeType = codeMaster.CodeMasterCode;
+                }
+                codeType = currentCodeType;
+            }
+
+            ViewBag.CurrentCodeType = codeType;
+
+            if (string.IsNullOrEmpty(codeType))
+            {
+                return View((new List<CodeMaster>()).ToPagedList(0, 0));
+            }
 
             if (searchString != null)
             {
@@ -35,38 +70,40 @@ namespace Web.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var codeMasterList = from s in _context.CodeMasterList
-                           select s;
+            IQueryable<CodeMaster> codeMasterList = from m in _context.CodeMasterList
+                                                    where m.CodeMasterType == codeType
+                                                    select m;
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                codeMasterList = codeMasterList.Where(s => s.CodeMasterValue.ToUpper().Contains(searchString.ToUpper()));
+                codeMasterList = codeMasterList.Where(m => m.CodeMasterValue.ToUpper().Contains(searchString.ToUpper()));
             }
+
+            ViewBag.TotalSearchResult = codeMasterList.Count();
+
             switch (sortOrder)
             {
                 case "id_desc":
-                    codeMasterList = codeMasterList.OrderByDescending(s => s.Id);
+                    codeMasterList = codeMasterList.OrderByDescending(m => m.Id);
                     break;
                 case "value_desc":
-                    codeMasterList = codeMasterList.OrderByDescending(s => s.CodeMasterValue);
+                    codeMasterList = codeMasterList.OrderByDescending(m => m.CodeMasterValue);
                     break;
                 case "date_desc":
-                    codeMasterList = codeMasterList.OrderByDescending(s => s.LastUpdatedDateTime);
+                    codeMasterList = codeMasterList.OrderByDescending(m => m.LastUpdatedDateTime);
                     break;
                 case "id_asc":
-                    codeMasterList = codeMasterList.OrderBy(s => s.Id);
+                    codeMasterList = codeMasterList.OrderBy(m => m.Id);
                     break;
                 case "value_asc":
-                    codeMasterList = codeMasterList.OrderBy(s => s.CodeMasterValue);
+                    codeMasterList = codeMasterList.OrderBy(m => m.CodeMasterValue);
                     break;
-                //case "date_asc":
-                //    codeMasterList = codeMasterList.OrderBy(s => s.LastUpdatedDateTime);
-                //    break;
                 default:
-                    codeMasterList = codeMasterList.OrderBy(s => s.LastUpdatedDateTime);
+                    codeMasterList = codeMasterList.OrderBy(m => m.LastUpdatedDateTime);
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = GlobalConstant.SMALL_PAGE_SIZE;
             int pageNumber = (page ?? 1);
             return View(codeMasterList.ToPagedList(pageNumber, pageSize));
         }

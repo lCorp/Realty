@@ -28,6 +28,9 @@ namespace Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css-backend").Include(
+                        "~/Content/Site-BackEnd.css"));
+
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
                         "~/Content/bootstrap.css"));
 

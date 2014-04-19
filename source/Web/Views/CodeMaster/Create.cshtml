@@ -1,19 +1,22 @@
-﻿@model Core.Models.CodeMaster
+﻿@using Core.Models;
+@using Core.Resources.Views.CodeMaster;
+
+@model CodeMaster
 
 @{
-    Layout = "~/Views/Shared/_BackEndLayout.cshtml";        
-    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
+    ViewBag.Title = CodeMasterViewResource.Title;
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Thêm mới</h4>
+        <h4>@CodeMasterViewResource.CreateNew</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -41,7 +44,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(CodeMasterViewResource.BackToList, "Index")
 </div>
 
 @section Scripts {

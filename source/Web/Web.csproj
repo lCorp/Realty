@@ -807,16 +807,17 @@
     <Content Include="Views\Shared\_HeadPartal.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Shared\_RealtySearchContent.cshtml" />
     <Content Include="Views\Shared\_WebHeader.cshtml" />
     <Content Include="Views\Shared\_WebFooter.cshtml" />
     <Content Include="Views\Shared\_Social.cshtml" />
-    <Content Include="Views\Shared\_BackEndLayout.cshtml" />
     <Content Include="Views\CodeMaster\Create.cshtml" />
     <Content Include="Views\CodeMaster\Delete.cshtml" />
     <Content Include="Views\CodeMaster\Details.cshtml" />
     <Content Include="Views\CodeMaster\Edit.cshtml" />
     <Content Include="Views\CodeMaster\Index.cshtml" />
     <Content Include="Views\Culture\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBackEnd.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

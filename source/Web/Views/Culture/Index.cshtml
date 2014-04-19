@@ -1,15 +1,20 @@
-﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_BackEndLayout.cshtml";
+﻿@using Core.Models
+@using Core.Resources.Views.Culture;
+
+@model List<CodeMaster>
+
+@{
+    ViewBag.Title = CultureViewResource.Title;
+    Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
 }
 
-<h2>Language Culture</h2>
-<p>Select your language culture</p>
+<h2>@ViewBag.Title</h2>
+<p>@CultureViewResource.SelectCulture</p>
 <ul>
-    <li>
-        @Html.ActionLink("Tiếng Việt", "ChangeCulture", "Culture", new { lang = "vi", returnUrl = ViewBag.ReturnUrl }, null)
-    </li>
-    <li>
-        @Html.ActionLink("English", "ChangeCulture", "Culture", new { lang = "en", returnUrl = ViewBag.ReturnUrl }, null)
-    </li>
+    @foreach (CodeMaster item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.LocalizedValue, "ChangeCulture", "Culture", new { lang = item.CodeMasterCode, returnUrl = ViewBag.ReturnUrl }, null)
+        </li>
+    }
 </ul>

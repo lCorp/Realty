@@ -1,65 +1,105 @@
-﻿@using PagedList.Mvc;
+﻿@using PagedList;
+@using PagedList.Mvc;
 @using Core.Models;
-@using Core.Resources;
+@using Core.Resources.Views.CodeMaster;
 
-@model PagedList.IPagedList<CodeMaster>
+@model IPagedList<CodeMaster>
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = GlobalResource.CodeMaster_View_Title;
-    Layout = "~/Views/Shared/_BackEndLayout.cshtml";        
+    ViewBag.Title = CodeMasterViewResource.Title;
+    Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
+    List<CodeMaster> editableCodeList = CodeMaster.GetListByType("EditableCode", Culture);
 }
 
-<h2>Students</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@using (Html.BeginForm("Index", "CodeMaster", FormMethod.Get))
+@if (editableCodeList.Count <= 0)
 {
     <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        @CodeMasterViewResource.NoEditableCode
     </p>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Mã Số", "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            @Html.ActionLink("Giá Trị", "Index", new { sortOrder = ViewBag.ValueSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            @Html.ActionLink("Lần Cập Nhật Cuối", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th></th>
-    </tr>
+else
+{
+    <text>
+
+        @{CodeMaster currentEditableCode = editableCodeList.FirstOrDefault(m => m.CodeMasterCode == ViewBag.CurrentCodeType);
+        if (currentEditableCode != null)
+        {
+            editableCodeList.Remove(currentEditableCode);
+        }
+        else
+        {
+            currentEditableCode = editableCodeList[0];
+            editableCodeList.RemoveAt(0);
+        }}
+        <p>
+            @Html.ActionLink(@CodeMasterViewResource.CreateNew, "Create")
+        </p>
+        @using (Html.BeginForm("Index", "CodeMaster", FormMethod.Get, new { Class = "navbar-form navbar-left", Role = "search" }))
+        {
+            <div class="form-group">
+                <input name="SearchString" type="text" class="form-control" placeholder="@CodeMasterViewResource.FindByValue" value="@ViewBag.CurrentFilter">
+            </div>
+            <button type="submit" class="btn btn-default">@CodeMasterViewResource.Search</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    @currentEditableCode.LocalizedValue
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (CodeMaster item in editableCodeList)
+                    {
+                        <li>
+                            @Html.ActionLink(item.LocalizedValue, "Index", "CodeMaster", new { CodeType = item.CodeMasterCode }, null)
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink(CodeMasterViewResource.Id, "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                </th>
+                <th>
+                    @Html.ActionLink(CodeMasterViewResource.Value, "Index", new { sortOrder = ViewBag.ValueSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                </th>
+                <th>
+                    @Html.ActionLink(CodeMasterViewResource.LastUpdatedDateTime, "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                </th>
+                <th></th>
+            </tr>
 
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodeMasterValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDateTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodeMasterValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDateTime)
+                    </td>
+                    <td>
+                        @Html.ActionLink(CodeMasterViewResource.Edit, "Edit", new { id = item.Id }) |
+                        @Html.ActionLink(CodeMasterViewResource.Details, "Details", new { id = item.Id }) |
+                        @Html.ActionLink(CodeMasterViewResource.Delete, "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-</table>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        </table>
+        <br />
+        @string.Format(CodeMasterViewResource.PageOf, ViewBag.TotalSearchResult, Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber, @Model.PageCount)
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </text>
+}

@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title | @WebsiteName</title>
     <link type="image/x-icon" rel="shortcut icon" href="~/favicon.ico" />
+    @Styles.Render("~/Content/css-backend")
     @Styles.Render("~/Content/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -30,9 +31,8 @@
                 <ul class="nav navbar-nav">
                     @foreach (ModuleInMenu item in ModuleInMenu.GetMenuList("BackEnd"))
                     {
-                        <li><a href="@item.GetTargetUrl()">@ModuleInMenu.GetLocalizedValue(item.Id, Culture, item.MenuName)</a></li>
+                        <li><a href="@Url.Content(item.GetTargetUrl())">@item.GetMenuLocalizedName(Culture)</a></li>
                     }
-                    <li>@Html.ActionLink(CodeMaster.GetLocalizedValue("Culture", Culture), "Index", "Culture", new { returnUrl = this.Request.RawUrl }, null)</li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>@WebsiteName &copy; @DateTime.Now.Year</p>
+            <p>@WebsiteName &copy; @DateTime.Now.Year | <span class="glyphicon glyphicon-globe"></span> @Html.ActionLink(Culture, "Index", "Culture", new { returnUrl = this.Request.RawUrl }, null)</p>
         </footer>
     </div>
 
