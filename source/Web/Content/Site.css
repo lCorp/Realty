@@ -291,7 +291,7 @@ textarea {
 
 /*#region Body customized style*/
 .web-body {
-    height: 800px;
+    height: auto;
     /*background-color: #f2f2f2;*/
     position: relative;
     /*padding-bottom: 10px;*/
@@ -361,6 +361,7 @@ textarea {
                 border: 1px solid #ccc;
                 border-width: 1px 1px 1px 0;
                 height: 100%;
+                text-align: center;
             }
 
                 .web-body .bodyContentTop .spvContentFrm > div:first-child {
@@ -381,6 +382,35 @@ textarea {
                     width: auto;
                     float: none;
                 }
+
+                .web-body .bodyContentTop .spvContentFrm > div div.realtyVipImg {
+                    width: 70%;
+                    height: 60%;
+                    text-align: center;
+                    /*border: 1px solid #ccc;*/
+                    margin: 0 auto;
+                }
+
+                    .web-body .bodyContentTop .spvContentFrm > div div.realtyVipImg img {
+                        width: auto;
+                        height: 100%;
+                    }
+
+                .web-body .bodyContentTop .spvContentFrm > div div.realtyVipInfo {
+                    width: 95%;
+                    height: 38%;
+                    max-height: 37%;
+                    overflow: hidden;
+                    text-align: center;
+                    /*border: 1px solid #ccc;*/
+                    margin: 0 auto;
+                }
+
+                    .web-body .bodyContentTop .spvContentFrm > div div.realtyVipInfo span {
+                        font-weight: bold;
+                        font-size: 14px;
+                        color: #2220cc;
+                    }
 
         .web-body .bodyContentTop .outerFrame {
             margin-bottom: 10px;
@@ -414,6 +444,7 @@ textarea {
                 min-height: 200px;
                 overflow: hidden;
                 margin: 0;
+                margin-bottom: 10px;
                 padding: 0;
                 -webkit-border-radius: 0 4px 4px 0;
                 -moz-border-radius: 0 4px 4px 0;
@@ -428,6 +459,65 @@ textarea {
                     outline: none;
                     padding: 4px;
                 }
+
+                .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch {
+                    border: none;
+                }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch ul {
+                        background: none !important;
+                        border-width: 0 0 1px 0;
+                        -webkit-border-radius: 0;
+                        -moz-border-radius: 0;
+                        border-radius: 0;
+                    }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch ul li {
+                            font-size: 9px;
+                            outline: none;
+                        }
+
+                            .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch ul li a {
+                                outline: none;
+                            }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div {
+                        text-align: center;
+                    }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div span._advance {
+                            display: none;
+                        }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div .buttonLink {
+                            color: rgba(41,53,219,1);
+                            font-size: 12px;
+                            text-align: left;
+                            cursor: pointer;
+                        }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div input {
+                            width: 99%;
+                            height: 30px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            margin-bottom: 5px;
+                            outline: none;
+                        }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div select {
+                            width: 100%;
+                            height: 30px;
+                            max-width: 100%;
+                            font-size: 14px;
+                            margin-bottom: 5px;
+                            outline: none;
+                        }
+
+                            .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch > div select > option:first-child {
+                                text-align: justify;
+                                text-indent: 50px;
+                            }
 
         .web-body .bodyContentTop .outerFrame .bodyContentMainSearchingForm {
             float: left;
@@ -514,14 +604,22 @@ textarea {
 
 .web-footer {
     width: 100%;
-    border: 1px solid #bebebe;
+    /*border: 1px solid #bebebe;*/
     background: #bebebe;
     margin: 0 auto;
 }
 
     .web-footer .footer {
-        height: 40px;
-        background: #bebebe;
+        height: 300px;
+        /*background: #bebebe;*/
+        background: rgb(255,255,255); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(41,53,219,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(41,53,219,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#2935db',GradientType=0 ); /* IE6-9 */
     }
 /*#endregion*/
 
@@ -583,4 +681,239 @@ textarea {
     .button i {
         font-size: 17px;
     }
+/*#endregion*/
+
+/*#region Index Content*/
+div.realtyContentFrm {
+    /*border: 1px solid red;*/
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+
+    div.realtyContentFrm div.realtyVip,
+    div.realtyContentFrm div.realtyNormal {
+        width: inherit;
+        height: auto;
+    }
+
+        div.realtyContentFrm div.realtyVip ul,
+        div.realtyContentFrm div.realtyNormal ul {
+            list-style: none;
+            width: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+            div.realtyContentFrm div.realtyVip ul li {
+                display: list-item;
+                border: 1px solid #ccc;
+                border-width: 0 0 1px 0;
+                height: 100px;
+                width: 95%;
+                padding-top: 10px;
+            }
+
+                div.realtyContentFrm div.realtyVip ul li .realtyImg {
+                    /*border: 1px solid #ccc;*/
+                    width: 120px;
+                    height: 100px;
+                    float: left;
+                }
+
+                    div.realtyContentFrm div.realtyVip ul li .realtyImg img {
+                        /*border: 1px solid #ccc;*/
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                div.realtyContentFrm div.realtyVip ul li .infoDetail {
+                    /*border: 1px solid #ccc;*/
+                    height: 100%;
+                    overflow: hidden;
+                    padding-left: 15px;
+                }
+
+                    div.realtyContentFrm div.realtyVip ul li .infoDetail > div {
+                        height: 20px;
+                        font-size: 13px;
+                        /*border: 1px solid #ccc;*/
+                    }
+
+                        div.realtyContentFrm div.realtyVip ul li .infoDetail > div span.bold {
+                            font-weight: bold;
+                        }
+
+                        div.realtyContentFrm div.realtyVip ul li .infoDetail > div span.date {
+                            float: right;
+                        }
+
+                    div.realtyContentFrm div.realtyVip ul li .infoDetail .title {
+                        min-height: 30px;
+                        height: auto;
+                        max-height: 40px;
+                        color: #1039bd;
+                        font-weight: bold;
+                        font-size: 14px;
+                        overflow: hidden;
+                    }
+
+        /*#region paging style*/
+        div.realtyContentFrm div.realtyVip .realtyContentPaging {
+            /*border: 1px solid #ccc;*/
+            width: 95%;
+            height: 30px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+            div.realtyContentFrm div.realtyVip .realtyContentPaging span {
+                border: 1px solid #ccc;
+                color: #ccc;
+                line-height: 30px;
+                cursor: pointer;
+                position: relative;
+            }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span.selected {
+                    background-color: #25bd2d;
+                    color: white;
+                }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span:hover {
+                    color: #333;
+                }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span:active {
+                    top: 1px;
+                }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span:first-child {
+                    -webkit-border-radius: 25px 0 0 25px;
+                    -moz-border-radius: 25px 0 0 25px;
+                    border-radius: 25px 0 0 25px;
+                }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span:last-child {
+                    -webkit-border-radius: 0 25px 25px 0;
+                    -moz-border-radius: 0 25px 25px 0;
+                    border-radius: 0 25px 25px 0;
+                }
+
+                div.realtyContentFrm div.realtyVip .realtyContentPaging span i {
+                    padding: 5px;
+                }
+        /*#endregion*/
+
+        div.realtyContentFrm div.realtyNormal ul li {
+            display: list-item;
+            border: 1px solid #ccc;
+            border-width: 0 0 1px 0;
+            height: 60px;
+            width: 95%;
+            padding-top: 10px;
+        }
+
+            div.realtyContentFrm div.realtyNormal ul li .realtyImg {
+                /*border: 1px solid #ccc;*/
+                width: 50px;
+                height: 50px;
+                float: left;
+            }
+
+                div.realtyContentFrm div.realtyNormal ul li .realtyImg img {
+                    /*border: 1px solid #ccc;*/
+                    width: 100%;
+                    height: 100%;
+                }
+
+            div.realtyContentFrm div.realtyNormal ul li .infoDetail {
+                /*border: 1px solid #ccc;*/
+                height: 100%;
+                overflow: hidden;
+                padding-left: 15px;
+            }
+
+                div.realtyContentFrm div.realtyNormal ul li .infoDetail > div {
+                    height: 20px;
+                    font-size: 13px;
+                    /*border: 1px solid #ccc;*/
+                }
+
+                    div.realtyContentFrm div.realtyNormal ul li .infoDetail > div span.bold {
+                        font-weight: bold;
+                    }
+
+                    div.realtyContentFrm div.realtyNormal ul li .infoDetail > div span.date {
+                        float: right;
+                    }
+
+                div.realtyContentFrm div.realtyNormal ul li .infoDetail .title {
+                    min-height: 35px;
+                    height: auto;
+                    max-height: 35px;
+                    color: #1039bd;
+                    font-weight: bold;
+                    font-size: 14px;
+                    overflow: hidden;
+                }
+
+        /*#region paging style*/
+        div.realtyContentFrm div.realtyNormal .realtyContentPaging {
+            /*border: 1px solid #ccc;*/
+            width: 95%;
+            height: 20px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+            div.realtyContentFrm div.realtyNormal .realtyContentPaging span {
+                border: 1px solid #ccc;
+                color: #ccc;
+                line-height: 20px;
+                cursor: pointer;
+                position: relative;
+            }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span.selected {
+                    background-color: #25bd2d;
+                    color: white;
+                }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span:hover {
+                    color: #333;
+                }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span:active {
+                    top: 1px;
+                }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span:first-child {
+                    -webkit-border-radius: 25px 0 0 25px;
+                    -moz-border-radius: 25px 0 0 25px;
+                    border-radius: 25px 0 0 25px;
+                }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span:last-child {
+                    -webkit-border-radius: 0 25px 25px 0;
+                    -moz-border-radius: 0 25px 25px 0;
+                    border-radius: 0 25px 25px 0;
+                }
+
+                div.realtyContentFrm div.realtyNormal .realtyContentPaging span i {
+                    padding: 5px;
+                }
+    /*#endregion*/
+
+    div.realtyContentFrm::selection,
+    div.realtyContentFrm ul::selection,
+    div.realtyContentFrm ul li::selection,
+    div.realtyContentFrm ul li .realtyImg::selection,
+    div.realtyContentFrm ul li .realtyImg img::selection,
+    div.realtyContentFrm .realtyContentPaging::selection,
+    .realtyContentPaging span::selection,
+    .realtyContentPaging span i::selection {
+        background-color: transparent;
+    }
+
 /*#endregion*/

@@ -2,15 +2,87 @@
 
 @*<h2>Index</h2>*@
 
-<div class="realtyContentFrm" style="border: 1px solid red; width: 100%; height: 500px;">
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+<div class="realtyContentFrm">
+    <div class="realtyVip">
+        <ul>
+            @for (int i = 0; i < 5; i++)
+            {
+                <li>
+                    <div class="realtyImg"><img src="~/Images/HouseDefaultBlack.png" width="100%" height="100%" /></div>
+                    <div class="infoDetail">
+                        <div class="title"><span>Đất nền KDC Phú Mỹ- Vạn Phát Hưng Quận 7, giá rẻ nhất 25.5tr/m2</span></div>
+                        <div class="cost">
+                            <span class="bold">Giá: </span><span>17tr/m²</span>
+                        </div>
+                        <div class="are">
+                            <span class="bold">Diện tích: </span><span>20 m²</span>
+                        </div>
+                        <div class="address">
+                            <span class="bold">Địa chỉ: </span><span>Quận 7, Tp.HCM</span>
+                            <span class="date">19/04/2014</span>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="realtyContentPaging">
+            <span><i class="fa fa-chevron-left"></i></span>
+            @for (int i = 0; i < 5; i++)
+            {
+                if (i == 2)
+                {
+                    <span class="selected"><i>@i</i></span>
+                }
+                else
+                {
+                    <span><i>@i</i></span>
+
+                }
+            }
+            <span><i class="fa fa-chevron-right"></i></span>
+        </div>
+    </div>
+</div>
+
+<div style="width: 100%; height: 40px; background-color: #aeaeae; margin: 0; padding: 0;">
+    <span style="line-height: 40px; font-weight: bold; color: #f52814; padding-left: 15px;">Tin mới</span>
+</div>
+<hr style="border: 1px solid #ccc; border-width: 1px 0 0 0;" />
+
+<div class="realtyContentFrm">
+    <div class="realtyNormal">
+        <ul>
+            @for (int i = 0; i < 5; i++)
+            {
+                <li>
+                    <div class="realtyImg"><img src="~/Images/HouseDefaultLightBlue.png" width="100%" height="100%" /></div>
+                    <div class="infoDetail">
+                        <div class="title"><span>Đất nền KDC Phú Mỹ- Vạn Phát Hưng Quận 7, giá rẻ nhất 25.5tr/m2</span></div>
+                        <div class="cost">
+                            <span class="bold">Giá: </span><span>17tr/m²</span>
+                            <span class="bold">Diện tích: </span><span>20 m²</span>
+                            <span class="bold">Địa chỉ: </span><span>Quận 7, Tp.HCM</span>
+                            <span class="date">19/04/2014</span>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+        <div class="realtyContentPaging">
+            <span><i class="fa fa-chevron-left"></i></span>
+            @for (int i = 0; i < 5; i++)
+            {
+                if (i == 2)
+                {
+                    <span class="selected"><i>@i</i></span>
+                }
+                else
+                {
+                    <span><i>@i</i></span>
+
+                }
+            }
+            <span><i class="fa fa-chevron-right"></i></span>
+        </div>
+    </div>
 </div>

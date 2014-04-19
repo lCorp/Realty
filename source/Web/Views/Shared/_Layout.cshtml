@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title - Miền Đất Mới</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/icon")
-    @Scripts.Render("~/bundles/modernizr")
+    @Html.Partial("_HeadPartal")
 </head>
 <body>
     <div class="container body-content">
@@ -17,11 +15,17 @@
             <div class="bodyContentTop">
                 <!--realty content super vip-->
                 <div class="spvContentFrm">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <div>
+                            <div class="realtyVipImg">
+                                <img src="~/Images/vilage2.PNG" />
+                            </div>
+                            <div class="realtyVipInfo">
+                                <span>Đất nền Phú Mỹ, Vạn Phát Hưng, giá tốt, quận 7</span>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div class="clear"></div>
                 <!--Searching form-->
@@ -31,22 +35,61 @@
                             @RenderBody()
                         </div>
                         <div class="contentRight">
-                            <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
-                            <div class="button fullBoderRadius"><i class="fa fa-search"></i></div>
+                            <div>
+                                <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
+                                <div class="button fullBoderRadius"><i class="fa fa-search"></i></div>
+                            </div>
+
+                            <div id="tabsSearch">
+                                <ul>
+                                    <li><a href="#tabs-1">Nhà đất bán</a></li>
+                                    <li><a href="#tabs-2">Nhà đất cho thuê</a></li>
+                                    <li><a href="#tabs-3">Nhà đất mua</a></li>
+                                    <li><a href="#tabs-4">Nhà đất thuê</a></li>
+                                </ul>
+                                <div id="tabs-1">
+                                    @Html.Partial("_RealtySearchContent")
+                                </div>
+                                <div id="tabs-2">
+                                    @Html.Partial("_RealtySearchContent")
+                                </div>
+                                <div id="tabs-3">
+                                    @Html.Partial("_RealtySearchContent")
+                                </div>
+                                <div id="tabs-4">
+                                    @Html.Partial("_RealtySearchContent")
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="contentRight">
+                            <div class="advForm" style="">
+
+                            </div>
+                        </div>
+
+                        <div class="contentRight">
+                            <div class="advForm" style="">
+
+                            </div>
+                        </div>
+                        <div class="contentRight">
+                            <div class="advForm" style="">
+
+                            </div>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-            <div class="bodyContentBottom">
-            </div>
+            @*<div class="bodyContentBottom">
+                </div>*@
         </div>
         <div class="web-footer">
             @Html.Partial("_WebFooter")
         </div>
     </div>
     @Html.Partial("_Social")
-    @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>

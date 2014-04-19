@@ -23,6 +23,8 @@ namespace Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/realty").Include("~/Scripts/realty.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/site.css"));
 
