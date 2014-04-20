@@ -11,12 +11,12 @@ namespace Web.Controllers
 {
     public class CultureController : Controller
     {
-        private readonly Context _context = new Context();
+        private readonly Context context = new Context();
 
         public ActionResult Index(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            List<CodeMaster> cultureList = this._context.CodeMasterList.Where(m => m.CodeMasterType == "Culture").OrderBy(m => m.Ordinal).ToList();
+            List<CodeMaster> cultureList = this.context.CodeMasterList.Where(m => m.CodeMasterType == "Culture").OrderBy(m => m.Ordinal).ToList();
             return View(cultureList);
         }
 
@@ -32,7 +32,7 @@ namespace Web.Controllers
         {
             if (disposing)
             {
-                _context.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

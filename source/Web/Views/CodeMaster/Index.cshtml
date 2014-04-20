@@ -10,7 +10,7 @@
 @{
     ViewBag.Title = CodeMasterViewResource.Title;
     Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
-    List<CodeMaster> editableCodeList = CodeMaster.GetListByType("EditableCode", Culture);
+    List<CodeMaster> editableCodeList = CodeMaster.GetListByTypeWithLocalization("EditableCode", Culture);
 }
 
 <h2>@ViewBag.Title</h2>

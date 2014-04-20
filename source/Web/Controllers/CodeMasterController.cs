@@ -17,7 +17,7 @@ namespace Web.Controllers
 {
     public class CodeMasterController : Controller
     {
-        private readonly Context _context = new Context();
+        private readonly Context context = new Context();
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, string currentCodeType, string codeType, string currentParentValue, string parentValue, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -69,19 +69,12 @@ namespace Web.Controllers
 
             if (!String.IsNullOrEmpty(parentValue))
             {
-                codeMasterList = from m1 in this._context.CodeMasterList
-                                 from m2 in this._context.CodeMasterList
-                                 where m1.CodeMasterType == codeType
-                                 where m1.ParentId == m2.Id
-                                 where string.Compare(m2.CodeMasterValue, parentValue, StringComparison.OrdinalIgnoreCase) == 0
-                                 select m1;
+                codeMasterList = CodeMaster.GetAvailableListByType(codeType, parentValue).AsQueryable();
             }
             else
             {
-                codeMasterList = this._context.CodeMasterList.Where(m => m.CodeMasterType == codeType);
+                codeMasterList = CodeMaster.GetAvailableListByType(codeType).AsQueryable();
             }
-
-            codeMasterList = codeMasterList.Where(m => string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -150,7 +143,7 @@ namespace Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == model.CodeMasterType && m.CodeMasterValue == model.CodeMasterValue && m.ParentId == model.ParentId && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
+                    CodeMaster codeMaster = this.context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == model.CodeMasterType && m.CodeMasterValue == model.CodeMasterValue && m.ParentId == model.ParentId && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
                     if (codeMaster != null)
                     {
                         ModelState.AddModelError("", CodeMasterViewResource.Duplicated);
@@ -158,8 +151,8 @@ namespace Web.Controllers
                     }
 
                     model.CodeMasterCode = Guid.NewGuid().ToString();
-                    _context.CodeMasterList.Add(model);
-                    _context.SaveChanges();
+                    context.CodeMasterList.Add(model);
+                    context.SaveChanges();
                     ViewBag.InfoMessage = CodeMasterViewResource.SaveSuccess;
                     return View(model);
                 }
@@ -180,7 +173,7 @@ namespace Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CodeMaster codeMaster = _context.CodeMasterList.Find(id);
+            CodeMaster codeMaster = context.CodeMasterList.Find(id);
             if (codeMaster == null)
             {
                 return HttpNotFound();
@@ -199,8 +192,8 @@ namespace Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Entry(codeMaster).State = EntityState.Modified;
-                    _context.SaveChanges();
+                    context.Entry(codeMaster).State = EntityState.Modified;
+                    context.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
@@ -224,7 +217,7 @@ namespace Web.Controllers
             {
                 ViewBag.ErrorMessage = CodeMasterViewResource.DeleteFailed;
             }
-            codeMaster = _context.CodeMasterList.FirstOrDefault(m => m.Id == id);
+            codeMaster = context.CodeMasterList.FirstOrDefault(m => m.Id == id);
             if (codeMaster == null || !CodeMaster.IsEditableCodeType(codeMaster.CodeMasterType))
             {
                 ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToDelete;
@@ -240,10 +233,10 @@ namespace Web.Controllers
             string codeType = string.Empty;
             try
             {
-                CodeMaster codeMaster = _context.CodeMasterList.Find(id);
+                CodeMaster codeMaster = context.CodeMasterList.Find(id);
                 codeType = codeMaster.CodeMasterType;
                 codeMaster.Status = "DELETED";
-                _context.SaveChanges();
+                context.SaveChanges();
             }
             catch (RetryLimitExceededException/* dex */)
             {
@@ -256,10 +249,10 @@ namespace Web.Controllers
         private string CheckOrGetDefaultEditableCodeType(string codeTypeToCheck)
         {
             string result = string.Empty;
-            CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == codeTypeToCheck && m.CodeMasterType == "EditableCode");
+            CodeMaster codeMaster = this.context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == codeTypeToCheck && m.CodeMasterType == "EditableCode");
             if (codeMaster == null)
             {
-                codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
+                codeMaster = this.context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
             }
             if (codeMaster != null)
             {
@@ -272,7 +265,7 @@ namespace Web.Controllers
         {
             if (disposing)
             {
-                _context.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

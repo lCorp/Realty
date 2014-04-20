@@ -90,7 +90,7 @@ namespace Core.Models
             return result;
         }
 
-        public static List<CodeMaster> GetListByType(string codeType, string languageCulture)
+        public static List<CodeMaster> GetListByTypeWithLocalization(string codeType, string languageCulture)
         {
             List<CodeMaster> result = CodeMaster.GetListByType(codeType);
             using (Context context = new Context())
@@ -110,10 +110,46 @@ namespace Core.Models
             return result;
         }
 
-        public static List<CodeMaster> GetAvailableListByType(string codeType, string languageCulture)
+        public static List<CodeMaster> GetAvailableListByTypeWithLocalization(string codeType, string languageCulture)
         {
-            List<CodeMaster> result = GetListByType(codeType, languageCulture);
+            List<CodeMaster> result = GetListByTypeWithLocalization(codeType, languageCulture);
             result = result.Where(m => string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0).ToList();
+            return result;
+        }
+
+        public static List<CodeMaster> GetAvailableListByType(string codeType, string parentValue)
+        {
+            List<CodeMaster> result = new List<CodeMaster>();
+            using (Context context = new Context())
+            {
+                result = (from m1 in context.CodeMasterList
+                          from m2 in context.CodeMasterList
+                          where m1.CodeMasterType == codeType
+                          where m1.ParentId == m2.Id
+                          where string.Compare(m2.CodeMasterValue, parentValue, StringComparison.OrdinalIgnoreCase) == 0
+                          where string.Compare(m1.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0
+                          select m1).ToList();
+            }
+            return result;
+        }
+
+        public static List<CodeMaster> GetAvailableListByTypeWithLocalization(string codeType, string languageCulture, string parentValue)
+        {
+            List<CodeMaster> result = new List<CodeMaster>();
+            using (Context context = new Context())
+            {
+                result = (from m1 in context.CodeMasterList
+                          from m2 in context.CodeMasterList
+                          where m1.CodeMasterType == codeType
+                          where m1.ParentId == m2.Id
+                          where string.Compare(m2.CodeMasterValue, parentValue, StringComparison.OrdinalIgnoreCase) == 0
+                          where string.Compare(m1.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0
+                          select m1).ToList();
+            }
+            foreach (CodeMaster item in result)
+            {
+                item.LocalizedValue = BaseEntity.GetLocalizedValue(item.Id, languageCulture, item.LocalizedValue);
+            }
             return result;
         }
 
