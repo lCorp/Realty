@@ -811,6 +811,8 @@
     <Content Include="images\iconHS.png" />
     <Content Include="images\logo-main.png" />
     <Content Include="images\Middle_texture.jpg" />
+    <Content Include="images\new-icon.png" />
+    <Content Include="images\news-icon.png" />
     <Content Include="images\README.txt" />
     <Content Include="images\vilage.PNG" />
     <Content Include="images\vilage2.png" />

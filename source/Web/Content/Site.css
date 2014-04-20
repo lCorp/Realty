@@ -445,7 +445,7 @@ textarea {
 
             .web-body .bodyContentTop .innerFrame .contentLeft {
                 border: 1px solid #ccc;
-                width: 60%;
+                width: 65%;
                 min-height: 200px;
                 float: left;
                 margin: 0;
@@ -459,7 +459,7 @@ textarea {
                 border: 1px solid #ccc;
                 border-left: none;
                 width: auto;
-                max-width: 40%;
+                max-width: 35%;
                 min-height: 200px;
                 overflow: hidden;
                 margin: 0;
@@ -484,7 +484,7 @@ textarea {
                     .web-body .bodyContentTop .innerFrame .contentRight .containTab .headertitle {
                         border: 1px solid #ccc;
                         border-width: 0 1px 1px 0;
-                        width: 60%;
+                        width: 65%;
                         background-color: #f2f2f2;
                         height: 30px;
                         -webkit-border-radius: 0 0 4px 0;

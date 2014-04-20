@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Core.Models
+@{
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -47,9 +51,9 @@
                                 <div id="tabsSearch">
                                     <ul>
                                         <li><a href="#tabs-1">Nhà đất bán</a></li>
-                                        <li><a href="#tabs-2">Nhà đất cho thuê</a></li>
-                                        <li><a href="#tabs-3">Nhà đất mua</a></li>
-                                        <li><a href="#tabs-4">Nhà đất thuê</a></li>
+                                        <li><a href="#tabs-2">Cho thuê</a></li>
+                                        <li><a href="#tabs-3">Mua</a></li>
+                                        <li><a href="#tabs-4">Thuê</a></li>
                                     </ul>
                                     <div id="tabs-1">
                                         @Html.Partial("_RealtySearchContent")
@@ -70,6 +74,34 @@
 
                                 </div>
                             </div>
+
+                            <div class="containTab">
+                                <div style="height: 200px;">
+
+                                </div>
+                            </div>
+
+                            <div class="containTab">
+                                <div style="height: 200px;">
+
+                                </div>
+                            </div>
+
+                            <div class="containTab">
+                                <div style="height: 200px;">
+
+                                </div>
+                            </div>
+                            <div class="containTab">
+                                <div style="height: 200px;">
+
+                                </div>
+                            </div>
+                            <div class="containTab">
+                                <div style="height: 177px;">
+
+                                </div>
+                            </div>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -77,6 +109,99 @@
             </div>
             <div class="bodyContentBottom" style="text-align: center; background-color: #ff6a00;">
                 <span style="line-height: 120px; font-size: 20px; color: white;">Quảng cáo full page ở đây (972 x 120 px)</span>
+            </div>
+            <div class="bodyContentBottom" style="text-align: left; background-color: #f2f2f2">
+                <div style="width: 170px; height: auto; text-align: left; margin: 5px 0 0 10px; padding: 0; display: inline-block; float: left; ">
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT TP HCM</b></li>
+                        <li>Bán nhà đường Lê Văn Sỹ</li>
+                        <li>Bán nhà đường Bùi Thị Xuân</li>
+                        <li>Bán nhà Phường Tân Sơn Nhì</li>
+                        <li>Bán nhà Phường Bình Trưng Tây</li>
+                        <li>Bán nhà Phường Bến Thành</li>
+                        <li>Căn hộ Tân Hương Tower</li>
+                        <li>Căn hộ Tân Phước</li>
+                        <li>Nhà phố Mega Residence</li>
+                        <li>Căn hộ Topaz Garden</li>
+                        <li>Căn hộ Galaxy 9</li>
+                        <li>Phú Mỹ Hưng</li>
+                    </ul>
+                </div>
+                <div style="width: 170px; height: auto; text-align: left; margin: 5px 0 0 10px; padding: 0; display: inline-block; float: left; ">
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT HÀ NỘI</b></li>
+                        <li>Bán chung cư Thăng Long Victory</li>
+                        <li>Bán chung cư 136 Hồ Tùng Mậu</li>
+                        <li>Bans chung cư VP6 Linh Đàm</li>
+                        <li>Bán nhà đường Nguyễn Khang</li>
+                        <li>Bán chung cư New Skyline</li>
+                        <li>Chung cư CT2 Trung Văn</li>
+                        <li>Bán nhà Phố Trung Kính</li>
+                        <li>Mandarin Garden</li>
+                        <li>Celadon City</li>
+                        <li>Royal City</li>
+                        <li>Times City</li>
+                    </ul>
+                </div>
+
+                <div style="width: 170px; height: auto; text-align: left; margin: 5px 0 0 10px; padding: 0; display: inline-block; float: left; ">
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT ĐỒNG NAI</b></li>
+                        <li>Nhà đất Long Thành</li>
+                        <li>Bán đất Huyện Trảng Bom</li>
+                        <li>Bán nhà Phường An Bình</li>
+                        <li>Eco Sun Nhơn Trạch</li>
+                        <li>Bán đất nền dự án Sunflower City</li>
+                    </ul>
+                    <br />
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT BÌNH DƯƠNG</b></li>
+                        <li>Nhà đất Dĩ An</li>
+                        <li>Đất nền Phú Chánh</li>
+                        <li>Nhà đất Thủ Dầu Một</li>
+                        <li>Đất nền VSIP II Bình Dương</li>
+                        <li>Đất nền Thành phố mới Bình Dương</li>
+                    </ul>
+                </div>
+                <div style="width: 170px; height: auto; text-align: left; margin: 5px 0 0 10px; padding: 0; display: inline-block; float: left; ">
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT CẦN THƠ</b></li>
+                        <li>Bán đất Quận Bình Thủy</li>
+                        <li>Bán đất Quận Ninh Kiều</li>
+                        <li>Bán nhà Quận Ô Môn</li>
+                        <li>Bán nhà Quận Cái Răng</li>
+                        <li>Bán nhà Huyện Cờ Đỏ</li>
+                    </ul>
+                    <br />
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT ĐÀ NẴNG</b></li>
+                        <li>Bán nhà Phường Hòa An</li>
+                        <li>Bán đất Phường Thọ Quang</li>
+                        <li>Khu đô thị đảo sinh thái Hòa Xuân</li>
+                        <li>Căn hộ F Home</li>
+                        <li>Bán đất Quận Hải Châu</li>
+                    </ul>
+                </div>
+                <div style="width: 170px; height: auto; text-align: left; margin: 5px 0 0 10px; padding: 0; display: inline-block; float: left; ">
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT HẢI PHÒNG</b></li>
+                        <li>Nhà đất Hải An</li>
+                        <li>Nhà đất Hồng Bàng</li>
+                        <li>Bán nhà đường Trần Nguyên Hãn</li>
+                        <li>Bán nhà Huyện An Dương</li>
+                        <li>Bán nhà đường Lê Hồng Phong</li>
+                    </ul>
+                    <br />
+                    <ul style="list-style: none; margin: 0; padding: 0; font-size: 10px; color: #273fd4">
+                        <li><b style="font-size: 12px;">NHÀ ĐẤT LONG AN</b></li>
+                        <li>Bán nhà Huyện Tân Thạnh</li>
+                        <li>Bán đất xã An Thạnh</li>
+                        <li>KDC Mỹ Hạnh Hoàng Gia</li>
+                        <li>Khu dân cư Tân Đô</li>
+                        <li>Đất nền Eco Village</li>
+                    </ul>
+                </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
         <div class="web-footer">
