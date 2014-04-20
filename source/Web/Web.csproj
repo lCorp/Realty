@@ -289,6 +289,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Images\ad-icon.png" />
+    <Content Include="Images\Bottom_texture.jpg" />
     <Content Include="Images\flags\1x1\ad.svg" />
     <Content Include="Images\flags\1x1\ae.svg" />
     <Content Include="Images\flags\1x1\af.svg" />
@@ -794,6 +796,9 @@
     <Content Include="Images\HouseDefaultRed2.png" />
     <Content Include="Images\iconHS.png" />
     <Content Include="Images\logo-main.png" />
+    <Content Include="Images\Middle_texture.jpg" />
+    <Content Include="Images\README.txt" />
+    <Content Include="Images\Thumbs.db" />
     <Content Include="Images\vilage.PNG" />
     <Content Include="Images\vilage2.png" />
     <Content Include="Scripts\bootstrap.js" />

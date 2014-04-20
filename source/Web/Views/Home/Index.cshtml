@@ -3,26 +3,30 @@
 @*<h2>Index</h2>*@
 
 <div class="realtyContentFrm">
+    <div class="headerTitle">
+        <img src="~/Images/ad-icon.png" />
+        <span>Tin rao dành cho bạn</span>
+    </div>
     <div class="realtyVip">
         <ul>
             @for (int i = 0; i < 5; i++)
             {
-                <li>
-                    <div class="realtyImg"><img src="~/Images/HouseDefaultBlack.png" width="100%" height="100%" /></div>
-                    <div class="infoDetail">
-                        <div class="title"><span>Đất nền KDC Phú Mỹ- Vạn Phát Hưng Quận 7, giá rẻ nhất 25.5tr/m2</span></div>
-                        <div class="cost">
-                            <span class="bold">Giá: </span><span>17tr/m²</span>
-                        </div>
-                        <div class="are">
-                            <span class="bold">Diện tích: </span><span>20 m²</span>
-                        </div>
-                        <div class="address">
-                            <span class="bold">Địa chỉ: </span><span>Quận 7, Tp.HCM</span>
-                            <span class="date">19/04/2014</span>
-                        </div>
+            <li>
+                <div class="realtyImg"><img src="~/Images/HouseDefaultBlack.png" width="100%" height="100%" /></div>
+                <div class="infoDetail">
+                    <div class="title"><span>Đất nền KDC Phú Mỹ- Vạn Phát Hưng Quận 7, giá rẻ nhất 25.5tr/m2</span></div>
+                    <div class="cost">
+                        <span class="bold">Giá: </span><span>17tr/m²</span>
                     </div>
-                </li>
+                    <div class="are">
+                        <span class="bold">Diện tích: </span><span>20 m²</span>
+                    </div>
+                    <div class="address">
+                        <span class="bold">Địa chỉ: </span><span>Quận 7, Tp.HCM</span>
+                        <span class="date">19/04/2014</span>
+                    </div>
+                </div>
+            </li>
             }
         </ul>
         <div class="realtyContentPaging">
@@ -31,17 +35,24 @@
             {
                 if (i == 2)
                 {
-                    <span class="selected"><i>@i</i></span>
+            <span class="selected"><i>@i</i></span>
                 }
                 else
                 {
-                    <span><i>@i</i></span>
+            <span><i>@i</i></span>
 
                 }
             }
             <span><i class="fa fa-chevron-right"></i></span>
         </div>
     </div>
+</div>
+
+<div style="width: 100%; height: 100px; background-color: #ff6a00; border: 1px solid #ccc; border-width: 1px 0; margin-bottom: 10px; text-align: center;">
+    <span style="line-height: 100px; font-size: 20px; color: white;">
+        Quảng Cáo đặt tại đây
+        (580 x 100px)
+    </span>
 </div>
 
 <div style="width: 100%; height: 40px; background-color: #aeaeae; margin: 0; padding: 0;">
@@ -86,3 +97,104 @@
         </div>
     </div>
 </div>
+<br />
+<div class="realtyContentFrm">
+    <div id="realtyNewsTabs">
+        <div class="realtyNewsHeader">
+            <span>Bài viết mới</span>
+            <span><a href="#">Tư vấn luật</a></span> | <span><a href="#">Xây dựng</a></span> | <span><a href="#">Kiến trúc</a></span> | <span><a href="#">Nội - Ngoại thất</a></span> | <span><a href="#">Phong thủy</a></span>
+        </div>
+        <div class="realtyNewsBody">
+            <div class="realtyGroupNews">
+                <a href="#">
+                    <div>
+
+                        <img src="~/Images/HouseDefaultRed.png" />
+                        <a href="#">Tại sao nhà ở phải dựa vào lưng núi?</a>
+                        <p>
+                            Nhà xây dựng dựa lưng vào núi, là rất coi trọng tầm nhìn cảnh quan. Ngày nay,...
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="realtyGroupNews">
+                <a href="#">
+                    <div>
+
+                        <img src="~/Images/HouseDefaultRed.png" />
+                        <a href="#">Tại sao nhà ở phải dựa vào lưng núi?</a>
+                        <p>
+                            Nhà xây dựng dựa lưng vào núi, là rất coi trọng tầm nhìn cảnh quan. Ngày nay,...
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+            <div class="realtyGroupNews">
+                <a href="#">
+                    <div>
+
+                        <img src="~/Images/HouseDefaultRed.png" />
+                        <a href="#">Tại sao nhà ở phải dựa vào lưng núi?</a>
+                        <p>
+                            Nhà xây dựng dựa lưng vào núi, là rất coi trọng tầm nhìn cảnh quan. Ngày nay,...
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="realtyGroupNews">
+                <a href="#">
+                    <div>
+
+                        <img src="~/Images/HouseDefaultRed.png" />
+                        <a href="#">Tại sao nhà ở phải dựa vào lưng núi?</a>
+                        <p>
+                            Nhà xây dựng dựa lưng vào núi, là rất coi trọng tầm nhìn cảnh quan. Ngày nay,...
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+            <div class="realtyGroupAnotherNews">
+                <ul>
+                    <li>
+                        <a href="#">
+                            Ngôi nhà đẹp như tranh giữa thiên nhiên tại Rumani
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Tại sao trước nhà nên có "tụ thủy"?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Biệt thự 630 tỉ của nam diễn viên hài Robin Williams
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Tác dụng phong thủy của gương phản chiếu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Ngắm lâu đài cổ ở Scotland
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Tư vấn thiết kế biệt thự 3 tầng trên đất hình chữ L, DT 150m2
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

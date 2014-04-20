@@ -23,5 +23,6 @@ var layout = {
 
     Init: function () {
         $("div#tabsSearch").tabs();
+        $("div#realyNewsTabs").tabs();
     }
 }

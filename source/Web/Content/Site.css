@@ -6,13 +6,26 @@ body {
     padding: 0;
     margin: 0 auto;
     font-family: 'Segoe UI';
+    background-color: white;
+    /*background-image: url('/images/Bottom_texture.jpg');*/
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: top left;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    min-width: 970px;
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    /*background-image: url('/images/Middle_texture.jpg');*/
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-attachment: fixed;
+    min-height: 100%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -93,7 +106,7 @@ textarea {
 /*#region Header customized style*/
 .web-header {
     /*border: 1px solid #bebebe;*/
-    background-color: white;
+    background-color: transparent;
     width: 100% !important;
     text-align: center;
     /*padding: 10px 0;*/
@@ -296,13 +309,17 @@ textarea {
     position: relative;
     /*padding-bottom: 10px;*/
     margin: 0 auto;
-    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(247,247,247,0) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(247,247,247,0))); /* Chrome,Safari4+ */
+    /*background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(247,247,247,0) 100%);*/
+    /* FF3.6+ */
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(247,247,247,0)));*/
+    /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(247,247,247,0) 100%); /* Chrome10+,Safari5.1+ */
     background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(247,247,247,0) 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(247,247,247,0) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(247,247,247,0) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00f7f7f7',GradientType=0 ); /* IE6-9 */
+    background: none;
+    background-color: transparent;
 }
 
     .web-body .bodyContentTop {
@@ -358,6 +375,7 @@ textarea {
             .web-body .bodyContentTop .spvContentFrm > div {
                 float: left;
                 width: 20%;
+                background-color: white;
                 border: 1px solid #ccc;
                 border-width: 1px 1px 1px 0;
                 height: 100%;
@@ -415,6 +433,7 @@ textarea {
         .web-body .bodyContentTop .outerFrame {
             margin-bottom: 10px;
             /*border: 1px solid #ccc;*/
+            background-color: white;
             width: 100%;
         }
 
@@ -451,14 +470,69 @@ textarea {
                 border-radius: 0 4px 4px 0;
             }
 
-                .web-body .bodyContentTop .innerFrame .contentRight input[type=text] {
-                    border: 1px solid #bebebe;
-                    line-height: 20px;
-                    width: 80%;
-                    max-width: 80%;
-                    outline: none;
-                    padding: 4px;
+                .web-body .bodyContentTop .innerFrame .contentRight .containTab {
+                    border: 1px solid #ccc;
+                    border-width: 0 0 1px 0;
+                    width: 100%;
+                    height: auto;
                 }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight .containTab:last-child {
+                        border: none;
+                    }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight .containTab .headertitle {
+                        border: 1px solid #ccc;
+                        border-width: 0 1px 1px 0;
+                        width: 60%;
+                        background-color: #f2f2f2;
+                        height: 30px;
+                        -webkit-border-radius: 0 0 4px 0;
+                        -moz-border-radius: 0 0 4px  0;
+                        border-radius: 0 0 4px 0;
+                        text-align: center;
+                        position: relative;
+                    }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight .containTab .headertitle span {
+                            line-height: 30px;
+                            color: rgb(30,87,153);
+                            font-weight: bold;
+                        }
+
+                        .web-body .bodyContentTop .innerFrame .contentRight .containTab .headertitle img {
+                            position: absolute;
+                            left: 5px;
+                            top: 2px;
+                            z-index: 1;
+                            width: 26px;
+                        }
+
+                .web-body .bodyContentTop .innerFrame .contentRight .searchFrm {
+                    border: 1px solid #bebebe;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                    width: 95%;
+                    height: 30px;
+                    margin: 5px auto;
+                    text-align: center;
+                }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight .searchFrm input[type=text] {
+                        line-height: 20px;
+                        width: 87%;
+                        max-width: 87%;
+                        outline: none;
+                        padding: 4px;
+                        border: none;
+                    }
+
+                    .web-body .bodyContentTop .innerFrame .contentRight .searchFrm i {
+                        color: #061ca4;
+                        font-size: 15px;
+                        cursor: pointer;
+                    }
 
                 .web-body .bodyContentTop .innerFrame .contentRight div#tabsSearch {
                     border: none;
@@ -612,14 +686,16 @@ textarea {
     .web-footer .footer {
         height: 300px;
         /*background: #bebebe;*/
-        background: rgb(255,255,255); /* Old browsers */
-        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(41,53,219,1) 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(41,53,219,1))); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* IE10+ */
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(41,53,219,1) 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#2935db',GradientType=0 ); /* IE6-9 */
+        background: rgb(30,87,153); /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlNTc5OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzVlYWFlNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMDdjY2EiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(94,170,229,1) 50%, rgba(32,124,202,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(50%,rgba(94,170,229,1)), color-stop(100%,rgba(32,124,202,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(94,170,229,1) 50%,rgba(32,124,202,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(94,170,229,1) 50%,rgba(32,124,202,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(94,170,229,1) 50%,rgba(32,124,202,1) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(94,170,229,1) 50%,rgba(32,124,202,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=0 ); /* IE6-8 */
     }
 /*#endregion*/
 
@@ -688,8 +764,35 @@ div.realtyContentFrm {
     /*border: 1px solid red;*/
     width: 100%;
     height: auto;
-    padding: 5px;
+    /*padding: 5px;*/
 }
+
+    div.realtyContentFrm .headerTitle {
+        border: 1px solid #ccc;
+        border-width: 0 1px 1px 0;
+        width: 45%;
+        background-color: #f2f2f2;
+        height: 30px;
+        -webkit-border-radius: 4px 0 4px 0;
+        -moz-border-radius: 4px 0 4px 0;
+        border-radius: 4px 0 4px 0;
+        text-align: center;
+        position: relative;
+    }
+
+        div.realtyContentFrm .headerTitle span {
+            line-height: 30px;
+            color: rgb(30,87,153);
+            font-weight: bold;
+        }
+
+        div.realtyContentFrm .headerTitle img {
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            z-index: 1;
+            width: 28px;
+        }
 
     div.realtyContentFrm div.realtyVip,
     div.realtyContentFrm div.realtyNormal {
@@ -712,6 +815,7 @@ div.realtyContentFrm {
                 height: 100px;
                 width: 95%;
                 padding-top: 10px;
+                margin: 0 auto;
             }
 
                 div.realtyContentFrm div.realtyVip ul li .realtyImg {
@@ -812,6 +916,7 @@ div.realtyContentFrm {
             height: 60px;
             width: 95%;
             padding-top: 10px;
+            margin: 0 auto;
         }
 
             div.realtyContentFrm div.realtyNormal ul li .realtyImg {
@@ -903,8 +1008,104 @@ div.realtyContentFrm {
                 div.realtyContentFrm div.realtyNormal .realtyContentPaging span i {
                     padding: 5px;
                 }
-    /*#endregion*/
 
+    div.realtyContentFrm div#realtyNewsTabs {
+        margin: 0 auto;
+        padding: 0px;
+        border: none;
+    }
+
+        div.realtyContentFrm div#realtyNewsTabs .realtyNewsHeader {
+            border: 1px solid #888;
+            border-width: 0 0 1px 0;
+            background-color: #ebebeb;
+            height: 30px;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+
+            div.realtyContentFrm div#realtyNewsTabs .realtyNewsHeader span a {
+                text-decoration: none;
+            }
+
+            div.realtyContentFrm div#realtyNewsTabs .realtyNewsHeader span:first-child {
+                line-height: 34px;
+                padding: 5px;
+                color: white;
+                background-color: #888;
+                border: 1px solid #888;
+                -webkit-border-radius: 4px 4px 0 0;
+                -moz-border-radius: 4px 4px 0 0;
+                border-radius: 4px 4px 0 0;
+            }
+
+        div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+            div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupNews {
+                /*border: 1px solid #ccc;*/
+                width: 48%;
+                min-height: 90px;
+                max-height: 90px;
+                overflow: hidden;
+                padding: 2px;
+                display: inline-block;
+                margin: 2px 0 2px 3px;
+                font-size: 12px;
+                float: left;
+            }
+
+                div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupNews a a {
+                    overflow: hidden;
+                    float: left;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+
+                div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupNews img {
+                    /*border: 1px solid #ccc;*/
+                    width: 90px;
+                    height: 90px;
+                    margin: 0 2px;
+                    float: left;
+                }
+
+                div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupNews p {
+                    text-align: justify;
+                    /*border: 1px solid #ccc;*/
+                }
+
+            div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupAnotherNews {
+                border: 1px solid #ccc;
+                width: 95%;
+                height: 150px;
+                margin: 10px auto;
+                background-color: #f6f3f3;
+            }
+
+                div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupAnotherNews ul {
+                }
+
+                    div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupAnotherNews ul li {
+                        list-style: square;
+                        text-align: left;
+                        color: rgba(32,124,202,1);
+                        cursor: pointer;
+                    }
+
+                        div.realtyContentFrm div#realtyNewsTabs .realtyNewsBody .realtyGroupAnotherNews ul li a {
+                            text-decoration: none;
+                            color: inherit;
+                        }
+
+    /*#endregion*/
     div.realtyContentFrm::selection,
     div.realtyContentFrm ul::selection,
     div.realtyContentFrm ul li::selection,

@@ -7,7 +7,7 @@
     @Html.Partial("_HeadPartal")
 </head>
 <body>
-    <div class="container body-content">
+    <div class="body-content">
         <div class="web-header">
             @Html.Partial("_WebHeader")
         </div>
@@ -35,55 +35,49 @@
                             @RenderBody()
                         </div>
                         <div class="contentRight">
-                            <div>
-                                <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
-                                <div class="button fullBoderRadius"><i class="fa fa-search"></i></div>
-                            </div>
-
-                            <div id="tabsSearch">
-                                <ul>
-                                    <li><a href="#tabs-1">Nhà đất bán</a></li>
-                                    <li><a href="#tabs-2">Nhà đất cho thuê</a></li>
-                                    <li><a href="#tabs-3">Nhà đất mua</a></li>
-                                    <li><a href="#tabs-4">Nhà đất thuê</a></li>
-                                </ul>
-                                <div id="tabs-1">
-                                    @Html.Partial("_RealtySearchContent")
+                            <div class="containTab">
+                                <div class="headertitle">
+                                    <img src="~/Images/iconHS.png" />
+                                    <span>Công cụ tìm kiếm</span>
                                 </div>
-                                <div id="tabs-2">
-                                    @Html.Partial("_RealtySearchContent")
+                                <div class="searchFrm">
+                                    <input type="text" class="fullBoderRadius" placeholder="Nhập từ khóa để tìm theo cụm từ" />
+                                    <i class="fa fa-search"></i>
                                 </div>
-                                <div id="tabs-3">
-                                    @Html.Partial("_RealtySearchContent")
-                                </div>
-                                <div id="tabs-4">
-                                    @Html.Partial("_RealtySearchContent")
+                                <div id="tabsSearch">
+                                    <ul>
+                                        <li><a href="#tabs-1">Nhà đất bán</a></li>
+                                        <li><a href="#tabs-2">Nhà đất cho thuê</a></li>
+                                        <li><a href="#tabs-3">Nhà đất mua</a></li>
+                                        <li><a href="#tabs-4">Nhà đất thuê</a></li>
+                                    </ul>
+                                    <div id="tabs-1">
+                                        @Html.Partial("_RealtySearchContent")
+                                    </div>
+                                    <div id="tabs-2">
+                                        @Html.Partial("_RealtySearchContent")
+                                    </div>
+                                    <div id="tabs-3">
+                                        @Html.Partial("_RealtySearchContent")
+                                    </div>
+                                    <div id="tabs-4">
+                                        @Html.Partial("_RealtySearchContent")
+                                    </div>
                                 </div>
                             </div>
+                            <div class="containTab">
+                                <div style="height: 200px;">
 
-                        </div>
-                        <div class="contentRight">
-                            <div class="advForm" style="">
-
-                            </div>
-                        </div>
-
-                        <div class="contentRight">
-                            <div class="advForm" style="">
-
-                            </div>
-                        </div>
-                        <div class="contentRight">
-                            <div class="advForm" style="">
-
+                                </div>
                             </div>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-            @*<div class="bodyContentBottom">
-                </div>*@
+            <div class="bodyContentBottom" style="text-align: center; background-color: #ff6a00;">
+                <span style="line-height: 120px; font-size: 20px; color: white;">Quảng cáo full page ở đây (972 x 120 px)</span>
+            </div>
         </div>
         <div class="web-footer">
             @Html.Partial("_WebFooter")
