@@ -34,7 +34,7 @@ namespace Core.Persistence
             context.CodeMasterList.AddOrUpdate(m => m.Id,
                 new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), CodeMasterType = "EditableCode", CodeMasterCode = "Country", CodeMasterValue = "Country", LocalizedValue = "Quốc Gia", Level = 0, Ordinal = 0 },
                 new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), ParentId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|Country"), CodeMasterType = "EditableCode", CodeMasterCode = "City", CodeMasterValue = "City", LocalizedValue = "Tỉnh | Thành Phố", Level = 1, Ordinal = 1 },
-                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|District"), ParentId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), CodeMasterType = "EditableCode", CodeMasterCode = "District", CodeMasterValue = "Ward", LocalizedValue = "Quận | Huyện", Level = 2, Ordinal = 2 });
+                new CodeMaster { Id = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|District"), ParentId = CrytographyUtil.StringToGuid("CodeMaster:EditableCode|City"), CodeMasterType = "EditableCode", CodeMasterCode = "District", CodeMasterValue = "District", LocalizedValue = "Quận | Huyện", Level = 2, Ordinal = 2 });
 
             //Module
             context.ModuleList.AddOrUpdate(m => m.Id,

@@ -80,6 +80,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GlobalResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Models\CodeMaster\CodeMasterModelResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeMasterModelResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Views\CodeMaster\CodeMasterViewResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,9 +106,14 @@
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models\CodeMaster\CodeMasterModelResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodeMasterModelResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models\CodeMaster\CodeMasterModelResource.vi-VN.resx" />
     <EmbeddedResource Include="Resources\Views\CodeMaster\CodeMasterViewResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CodeMasterViewResource1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CodeMasterViewResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\CodeMaster\CodeMasterViewResource.vi-VN.resx" />
     <EmbeddedResource Include="Resources\Views\Culture\CultureViewResource.resx">
@@ -118,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extentions\" />
-    <Folder Include="Resources\Models\CodeMaster\" />
     <Folder Include="Resources\Views\Home\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

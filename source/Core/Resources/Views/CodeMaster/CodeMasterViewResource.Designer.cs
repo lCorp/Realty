@@ -70,11 +70,20 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Category.
+        ///   Looks up a localized string similar to Master Code.
         /// </summary>
         public static string CodeType {
             get {
                 return ResourceManager.GetString("CodeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this record?.
+        /// </summary>
+        public static string ConfirmDelete {
+            get {
+                return ResourceManager.GetString("ConfirmDelete", resourceCulture);
             }
         }
         
@@ -97,11 +106,29 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete failed. Try again, and if the problem persists see your system administrator..
+        /// </summary>
+        public static string DeleteFailed {
+            get {
+                return ResourceManager.GetString("DeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This value is already existed, please try another one..
+        /// </summary>
+        public static string Duplicated {
+            get {
+                return ResourceManager.GetString("Duplicated", resourceCulture);
             }
         }
         
@@ -142,11 +169,20 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no Code configured to be editable.
+        ///   Looks up a localized string similar to There is no Code configured to be editable..
         /// </summary>
         public static string NoEditableCode {
             get {
                 return ResourceManager.GetString("NoEditableCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The record to be deleted is not found..
+        /// </summary>
+        public static string NotFoundToDelete {
+            get {
+                return ResourceManager.GetString("NotFoundToDelete", resourceCulture);
             }
         }
         
@@ -169,6 +205,60 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parent Value.
+        /// </summary>
+        public static string ParentValue {
+            get {
+                return ResourceManager.GetString("ParentValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field with mark (*) is required.
+        /// </summary>
+        public static string RequiredFieldNote {
+            get {
+                return ResourceManager.GetString("RequiredFieldNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try again, and if the problem persists see your system administrator!.
+        /// </summary>
+        public static string SaveException {
+            get {
+                return ResourceManager.GetString("SaveException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to save changes..
+        /// </summary>
+        public static string SaveFailed {
+            get {
+                return ResourceManager.GetString("SaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulation! Save changes successfully..
+        /// </summary>
+        public static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
@@ -178,7 +268,7 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Code Master.
+        ///   Looks up a localized string similar to Master Code.
         /// </summary>
         public static string Title {
             get {

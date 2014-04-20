@@ -3,20 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Core.Persistence;
+using System.ComponentModel.DataAnnotations;
+using Core.Resources.Models.CodeMaster;
 
 namespace Core.Models
 {
     public class CodeMaster : BaseEntity
     {
+        private readonly Context _context = new Context();
+
         public Guid? ParentId { get; set; }
         public string CodeMasterType { get; set; }
         public string CodeMasterCode { get; set; }
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(CodeMasterModelResource))]
         public string CodeMasterValue { get; set; }
         public string LocalizedValue { get; set; }
         public int Level { get; set; }
         public int Ordinal { get; set; }
 
         #region Methods
+
+        public static bool IsEditableCodeType(string codeTypeToCheck)
+        {
+            bool result = false;
+            using (Context context = new Context())
+            {
+                CodeMaster codeMaster = context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == "EditableCode" && m.CodeMasterCode == codeTypeToCheck);
+                result = codeMaster != null;
+            }
+            return result;
+        }
+
+        public static string GetParentCodeType(string codeType)
+        {
+            string result = string.Empty;
+            using (Context context = new Context())
+            {
+                CodeMaster codeMaster = context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == "EditableCode" && m.CodeMasterCode == codeType);
+                if (codeMaster != null)
+                {
+                    CodeMaster parentCodeMaster = context.CodeMasterList.FirstOrDefault(m => m.Id == codeMaster.ParentId);
+                    if (parentCodeMaster != null)
+                    {
+                        result = parentCodeMaster.CodeMasterValue;
+                    }
+                }
+            }
+            return result;
+        }
 
         public static string GetValue(string codeMasterType, string codeMasterCode)
         {
@@ -51,7 +85,7 @@ namespace Core.Models
             List<CodeMaster> result = new List<CodeMaster>();
             using (Context context = new Context())
             {
-                result = context.CodeMasterList.Where(m => m.CodeMasterType == codeType).OrderBy(m => m.Ordinal).ToList();
+                result = context.CodeMasterList.Where(m => m.CodeMasterType == codeType).OrderBy(m => m.Ordinal).ThenBy(m => m.CodeMasterValue).ToList();
             }
             return result;
         }
@@ -66,6 +100,20 @@ namespace Core.Models
                     item.LocalizedValue = BaseEntity.GetLocalizedValue(item.Id, languageCulture, item.LocalizedValue);
                 }
             }
+            return result;
+        }
+
+        public static List<CodeMaster> GetAvailableListByType(string codeType)
+        {
+            List<CodeMaster> result = GetListByType(codeType);
+            result = result.Where(m => string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0).ToList();
+            return result;
+        }
+
+        public static List<CodeMaster> GetAvailableListByType(string codeType, string languageCulture)
+        {
+            List<CodeMaster> result = GetListByType(codeType, languageCulture);
+            result = result.Where(m => string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0).ToList();
             return result;
         }
 
