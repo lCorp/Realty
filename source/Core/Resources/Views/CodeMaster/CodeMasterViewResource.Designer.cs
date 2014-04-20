@@ -187,6 +187,15 @@ namespace Core.Resources.Views.CodeMaster {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The record to be edited is not found..
+        /// </summary>
+        public static string NotFoundToEdit {
+            get {
+                return ResourceManager.GetString("NotFoundToEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found {0} result | Page {1} of {2}.
         /// </summary>
         public static string PageOf {

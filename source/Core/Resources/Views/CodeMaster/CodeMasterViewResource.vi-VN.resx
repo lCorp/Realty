@@ -133,7 +133,7 @@
     <value>Xóa</value>
   </data>
   <data name="DeleteFailed" xml:space="preserve">
-    <value>Xóa thất bại. Vui lòng thử lại, và nếu vẫn gập lỗi tương tự, vui lòng liên hệ Quản Trị Hệ Thống của bạn!</value>
+    <value>Xóa thất bại. Vui lòng thử lại, và nếu vẫn gặp lỗi tương tự, vui lòng liên hệ Quản Trị Hệ Thống của bạn!</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Chi Tiết</value>
@@ -157,7 +157,10 @@
     <value>Hiện không có Danh Mục nào được cấu hình để sử dụng.</value>
   </data>
   <data name="NotFoundToDelete" xml:space="preserve">
-    <value>Không tìm thấy mẫu tin cần xóa.</value>
+    <value>Không tìm thấy mẫu tin để xóa.</value>
+  </data>
+  <data name="NotFoundToEdit" xml:space="preserve">
+    <value>Không tìm thấy mẫu tin để chỉnh sửa.</value>
   </data>
   <data name="PageOf" xml:space="preserve">
     <value>Có {0} kết quả | Trang {1} trên {2}</value>
@@ -175,7 +178,7 @@
     <value>Lưu</value>
   </data>
   <data name="SaveException" xml:space="preserve">
-    <value>Vui lòng thử lại, và nếu vẫn gập lỗi tương tự, vui lòng liên hệ Quản Trị Hệ Thống của bạn!</value>
+    <value>Vui lòng thử lại, và nếu vẫn gặp lỗi tương tự, vui lòng liên hệ Quản Trị Hệ Thống của bạn!</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
     <value>Lưu thất bại</value>

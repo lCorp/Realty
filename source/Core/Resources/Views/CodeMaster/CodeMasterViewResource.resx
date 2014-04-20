@@ -159,6 +159,9 @@
   <data name="NotFoundToDelete" xml:space="preserve">
     <value>The record to be deleted is not found.</value>
   </data>
+  <data name="NotFoundToEdit" xml:space="preserve">
+    <value>The record to be edited is not found.</value>
+  </data>
   <data name="PageOf" xml:space="preserve">
     <value>Found {0} result | Page {1} of {2}</value>
   </data>
