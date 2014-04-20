@@ -1,59 +1,78 @@
 ﻿@using Core.Models;
+@using Core.Resources.Views.CodeMaster;
 
 @model CodeMaster
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
+    ViewBag.Title = CodeMasterViewResource.Edit;
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Student</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
+    <text>
+        @Html.AntiForgeryToken()
+        @if (Model == null)
+        {
+            <text>
+                <p class="error">@ViewBag.ErrorMessage</p>
+                @Html.ActionLink(CodeMasterViewResource.BackToList, "Index")
+            </text>
+        }
+        else
+        {
+            <text>
+                <div class="form-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName)
-                @Html.ValidationMessageFor(model => model.LastName)
-            </div>
-        </div>
+                    <h4>@CodeMaster.GetValue("EditableCode", Model.CodeMasterType, Culture)</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, CodeMasterViewResource.SaveFailed)
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(m => m.CodeMasterType)
+                    @Html.HiddenFor(m => m.CodeMasterCode)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstMidName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstMidName)
-                @Html.ValidationMessageFor(model => model.FirstMidName)
-            </div>
-        </div>
+                    @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
+                    {
+                        <div class="alert alert-success">@ViewBag.InfoMessage</div>
+                    }
+                    @Html.HiddenFor(m => m.CodeMasterType)
+                    <div class="form-group">
+                        <label class="control-label col-md-2">@CodeMasterViewResource.Value</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CodeMasterValue) (*)
+                            @Html.ValidationMessageFor(model => model.CodeMasterValue)
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EnrollmentDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EnrollmentDate)
-                @Html.ValidationMessageFor(model => model.EnrollmentDate)
-            </div>
-        </div>
+                    @{string parentCodeType = CodeMaster.GetParentCodeType(Model.CodeMasterType);}
+                    @if (!string.IsNullOrEmpty(parentCodeType))
+                    {
+                        <div class="form-group">
+                            <label class="control-label col-md-2">@CodeMasterViewResource.ParentValue</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.ParentId, new SelectList(CodeMaster.GetAvailableListByType(parentCodeType), "Id", "CodeMasterValue"))
+                                @Html.ValidationMessageFor(model => model.CodeMasterType)
+                            </div>
+                        </div>
+                    }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">@CodeMasterViewResource.RequiredFieldNote</label>
+                        <div class="col-md-10">
+                            <input type="submit" value="@CodeMasterViewResource.Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink(CodeMasterViewResource.BackToList, "Index", new { codeType = Model.CodeMasterType })
+                </div>
+            </text>
+        }
+    </text>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

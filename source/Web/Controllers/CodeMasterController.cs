@@ -167,16 +167,17 @@ namespace Web.Controllers
         }
 
         // GET: /Student/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
+            CodeMaster codeMaster = null;
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToEdit;
             }
-            CodeMaster codeMaster = dataContext.CodeMasterList.Find(id);
-            if (codeMaster == null)
+            codeMaster = dataContext.CodeMasterList.FirstOrDefault(m => m.Id == id && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
+            if (codeMaster == null || !CodeMaster.IsEditableCodeType(codeMaster.CodeMasterType))
             {
-                return HttpNotFound();
+                ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToEdit;
             }
             return View(codeMaster);
         }
@@ -186,23 +187,34 @@ namespace Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, Category, Value")]CodeMaster codeMaster)
+        public ActionResult Edit([Bind(Include = "Id, ParentId, CodeMasterType, CodeMasterValue")]CodeMaster model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    CodeMaster codeMaster = this.dataContext.CodeMasterList.FirstOrDefault(m => m.Id != model.Id && m.CodeMasterType == model.CodeMasterType && m.CodeMasterValue == model.CodeMasterValue && m.ParentId == model.ParentId && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
+                    if (codeMaster != null)
+                    {
+                        ModelState.AddModelError("", CodeMasterViewResource.Duplicated);
+                        return View(model);
+                    }
+                    codeMaster = dataContext.CodeMasterList.FirstOrDefault(m => m.Id == model.Id);
+                    codeMaster.ParentId = model.ParentId;
+                    codeMaster.CodeMasterValue = model.CodeMasterValue;
                     dataContext.Entry(codeMaster).State = EntityState.Modified;
                     dataContext.SaveChanges();
-                    return RedirectToAction("Index");
+                    ViewBag.InfoMessage = CodeMasterViewResource.SaveSuccess;
+                    return View(codeMaster);
                 }
+                ModelState.AddModelError("", CodeMasterViewResource.SaveException);
             }
             catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", CodeMasterViewResource.SaveException);
             }
-            return View(codeMaster);
+            return View(model);
         }
 
         // GET: /Student/Delete/5
@@ -217,7 +229,7 @@ namespace Web.Controllers
             {
                 ViewBag.ErrorMessage = CodeMasterViewResource.DeleteFailed;
             }
-            codeMaster = dataContext.CodeMasterList.FirstOrDefault(m => m.Id == id);
+            codeMaster = dataContext.CodeMasterList.FirstOrDefault(m => m.Id == id && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
             if (codeMaster == null || !CodeMaster.IsEditableCodeType(codeMaster.CodeMasterType))
             {
                 ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToDelete;
