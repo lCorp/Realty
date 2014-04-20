@@ -16,6 +16,11 @@ textarea {
     max-width: 280px;
 }
 
+select{
+    width: 155px;
+    height: 26px;
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

@@ -6,45 +6,90 @@
 @{
     Layout = "~/Views/Shared/_LayoutBackEnd.cshtml";
     ViewBag.Title = CodeMasterViewResource.Title;
+    List<CodeMaster> editableCodeList = CodeMaster.GetListByType("EditableCode", Culture);
 }
 
 <h2>@ViewBag.Title</h2>
 
-
-@using (Html.BeginForm())
+@{CodeMaster currentEditableCode = editableCodeList.FirstOrDefault(m => m.CodeMasterCode == ViewBag.CurrentCodeType);
+if (currentEditableCode != null)
 {
-    @Html.AntiForgeryToken()
+    editableCodeList.Remove(currentEditableCode);
+}
+else
+{
+    currentEditableCode = editableCodeList[0];
+    editableCodeList.RemoveAt(0);
+}}
 
-    <div class="form-horizontal">
-        <h4>@CodeMasterViewResource.CreateNew</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+@if (editableCodeList.Count <= 0)
+{
+    <p>
+        @CodeMasterViewResource.NoEditableCode
+    </p>
+}
+else
+{
+    <text>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodeMasterType, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodeMasterType)
-                @Html.ValidationMessageFor(model => model.CodeMasterType)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodeMasterValue, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodeMasterValue)
-                @Html.ValidationMessageFor(model => model.CodeMasterValue)
-            </div>
-        </div>
+            <div class="form-horizontal">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        @CodeMasterViewResource.CreateNew @currentEditableCode.LocalizedValue
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        @foreach (CodeMaster item in editableCodeList)
+                        {
+                            <li>
+                                @Html.ActionLink(item.LocalizedValue, "Create", "CodeMaster", new { CodeType = item.CodeMasterCode }, null)
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <hr />
+                @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
+                {
+                    <div class="alert alert-success">@ViewBag.InfoMessage</div>
+                }
+                @Html.ValidationSummary(true,CodeMasterViewResource.SaveFailed)
+                @Html.HiddenFor(m => m.CodeMasterType)
+                <div class="form-group">
+                    <label class="control-label col-md-2">@CodeMasterViewResource.Value</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CodeMasterValue) (*)
+                        @Html.ValidationMessageFor(model => model.CodeMasterValue)
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                @{string parentCodeType = CodeMaster.GetParentCodeType(ViewBag.CurrentCodeType);}
+                @if (!string.IsNullOrEmpty(parentCodeType))
+                {
+                    <div class="form-group">
+                        <label class="control-label col-md-2">@CodeMasterViewResource.ParentValue</label>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.ParentId, new SelectList(CodeMaster.GetAvailableListByType(parentCodeType), "Id", "CodeMasterValue"))
+                            @Html.ValidationMessageFor(model => model.CodeMasterType)
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">@CodeMasterViewResource.RequiredFieldNote</label>
+                    <div class="col-md-10">
+                        <input type="submit" value="@CodeMasterViewResource.Save" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        }
+    </text>
 }
 
 <div>
-    @Html.ActionLink(CodeMasterViewResource.BackToList, "Index")
+    @Html.ActionLink(CodeMasterViewResource.BackToList, "Index", new { CodeType = ViewBag.CurrentCodeType })
 </div>
 
 @section Scripts {

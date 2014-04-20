@@ -8,17 +8,17 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity;
 using PagedList;
 using PagedList.Mvc;
-using Core.Resources;
 using Core.Persistence;
 using Core.Constant;
 using Core.Models;
+using Core.Resources.Views.CodeMaster;
 
 namespace Web.Controllers
 {
     public class CodeMasterController : Controller
     {
         private readonly Context _context = new Context();
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, string currentCodeType, string codeType, int? page)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, string currentCodeType, string codeType, string currentParentValue, string parentValue, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.IdSortParm = sortOrder == "id_asc" ? "id_desc" : "id_asc";
@@ -28,27 +28,11 @@ namespace Web.Controllers
             if (codeType != null)
             {
                 page = 1;
-                CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == codeType && m.CodeMasterType == "EditableCode");
-                if (codeMaster == null)
-                {
-                    codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
-                }
-                if (codeMaster != null)
-                {
-                    codeType = codeMaster.CodeMasterCode;
-                }
+                codeType = CheckOrGetDefaultEditableCodeType(codeType);
             }
             else
             {
-                CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == currentCodeType && m.CodeMasterType == "EditableCode");
-                if (codeMaster == null)
-                {
-                    codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
-                }
-                if (codeMaster != null)
-                {
-                    currentCodeType = codeMaster.CodeMasterCode;
-                }
+                currentCodeType = CheckOrGetDefaultEditableCodeType(currentCodeType);
                 codeType = currentCodeType;
             }
 
@@ -70,9 +54,34 @@ namespace Web.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            IQueryable<CodeMaster> codeMasterList = from m in _context.CodeMasterList
-                                                    where m.CodeMasterType == codeType
-                                                    select m;
+            if (parentValue != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                parentValue = currentParentValue;
+            }
+
+            ViewBag.CurrentParentValue = parentValue;
+
+            IQueryable<CodeMaster> codeMasterList = null;
+
+            if (!String.IsNullOrEmpty(parentValue))
+            {
+                codeMasterList = from m1 in this._context.CodeMasterList
+                                 from m2 in this._context.CodeMasterList
+                                 where m1.CodeMasterType == codeType
+                                 where m1.ParentId == m2.Id
+                                 where string.Compare(m2.CodeMasterValue, parentValue, StringComparison.OrdinalIgnoreCase) == 0
+                                 select m1;
+            }
+            else
+            {
+                codeMasterList = this._context.CodeMasterList.Where(m => m.CodeMasterType == codeType);
+            }
+
+            codeMasterList = codeMasterList.Where(m => string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -108,25 +117,25 @@ namespace Web.Controllers
             return View(codeMasterList.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: /Student/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CodeMaster codeMaster = _context.CodeMasterList.Find(id);
-            if (codeMaster == null)
-            {
-                return HttpNotFound();
-            }
-            return View(codeMaster);
-        }
-
         // GET: /Student/Create
-        public ActionResult Create()
+        public ActionResult Create(string currentCodeType, string codeType)
         {
-            return View();
+            if (codeType != null)
+            {
+                codeType = CheckOrGetDefaultEditableCodeType(codeType);
+            }
+            else
+            {
+                currentCodeType = CheckOrGetDefaultEditableCodeType(currentCodeType);
+                codeType = currentCodeType;
+            }
+
+            ViewBag.CurrentCodeType = codeType;
+
+            CodeMaster model = new CodeMaster();
+            model.CodeMasterType = codeType;
+
+            return View(model);
         }
 
         // POST: /Student/Create
@@ -134,23 +143,34 @@ namespace Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Category, Value")]CodeMaster codeMaster)
+        public ActionResult Create([Bind(Include = "ParentId, CodeMasterType, CodeMasterValue")]CodeMaster model)
         {
+            ViewBag.CurrentCodeType = model.CodeMasterType;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.CodeMasterList.Add(codeMaster);
+                    CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterType == model.CodeMasterType && m.CodeMasterValue == model.CodeMasterValue && m.ParentId == model.ParentId && string.Compare(m.Status, "DELETED", StringComparison.OrdinalIgnoreCase) != 0);
+                    if (codeMaster != null)
+                    {
+                        ModelState.AddModelError("", CodeMasterViewResource.Duplicated);
+                        return View(model);
+                    }
+
+                    model.CodeMasterCode = Guid.NewGuid().ToString();
+                    _context.CodeMasterList.Add(model);
                     _context.SaveChanges();
-                    return RedirectToAction("Index");
+                    ViewBag.InfoMessage = CodeMasterViewResource.SaveSuccess;
+                    return View(model);
                 }
+                ModelState.AddModelError("", CodeMasterViewResource.SaveException);
             }
             catch (RetryLimitExceededException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", CodeMasterViewResource.SaveException);
             }
-            return View(codeMaster);
+            return View(model);
         }
 
         // GET: /Student/Edit/5
@@ -191,21 +211,23 @@ namespace Web.Controllers
             }
             return View(codeMaster);
         }
+
         // GET: /Student/Delete/5
-        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        public ActionResult Delete(Guid? id, bool? saveChangesError = false)
         {
+            CodeMaster codeMaster = null;
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToDelete;
             }
-            if (saveChangesError.GetValueOrDefault())
+            else if (saveChangesError.GetValueOrDefault())
             {
-                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+                ViewBag.ErrorMessage = CodeMasterViewResource.DeleteFailed;
             }
-            CodeMaster codeMaster = _context.CodeMasterList.Find(id);
-            if (codeMaster == null)
+            codeMaster = _context.CodeMasterList.FirstOrDefault(m => m.Id == id);
+            if (codeMaster == null || !CodeMaster.IsEditableCodeType(codeMaster.CodeMasterType))
             {
-                return HttpNotFound();
+                ViewBag.ErrorMessage = CodeMasterViewResource.NotFoundToDelete;
             }
             return View(codeMaster);
         }
@@ -213,12 +235,14 @@ namespace Web.Controllers
         // POST: /Student/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
+            string codeType = string.Empty;
             try
             {
                 CodeMaster codeMaster = _context.CodeMasterList.Find(id);
-                _context.CodeMasterList.Remove(codeMaster);
+                codeType = codeMaster.CodeMasterType;
+                codeMaster.Status = "DELETED";
                 _context.SaveChanges();
             }
             catch (RetryLimitExceededException/* dex */)
@@ -226,7 +250,22 @@ namespace Web.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { codeType = codeType });
+        }
+
+        private string CheckOrGetDefaultEditableCodeType(string codeTypeToCheck)
+        {
+            string result = string.Empty;
+            CodeMaster codeMaster = this._context.CodeMasterList.FirstOrDefault(m => m.CodeMasterCode == codeTypeToCheck && m.CodeMasterType == "EditableCode");
+            if (codeMaster == null)
+            {
+                codeMaster = this._context.CodeMasterList.Where(m => m.CodeMasterType == "EditableCode").OrderBy(m => m.Ordinal).FirstOrDefault();
+            }
+            if (codeMaster != null)
+            {
+                result = codeMaster.CodeMasterCode;
+            }
+            return result;
         }
 
         protected override void Dispose(bool disposing)

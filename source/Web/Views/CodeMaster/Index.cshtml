@@ -36,12 +36,16 @@ else
             editableCodeList.RemoveAt(0);
         }}
         <p>
-            @Html.ActionLink(@CodeMasterViewResource.CreateNew, "Create")
+            @Html.ActionLink(@CodeMasterViewResource.CreateNew, "Create", new { currentCodeType = ViewBag.CurrentCodeType })
         </p>
         @using (Html.BeginForm("Index", "CodeMaster", FormMethod.Get, new { Class = "navbar-form navbar-left", Role = "search" }))
         {
+            @Html.Hidden("currentCodeType", ViewBag.CurrentCodeType as string)
             <div class="form-group">
                 <input name="SearchString" type="text" class="form-control" placeholder="@CodeMasterViewResource.FindByValue" value="@ViewBag.CurrentFilter">
+            </div>
+            <div class="form-group">
+                <input name="ParentValue" type="text" class="form-control" placeholder="@CodeMasterViewResource.ParentValue" value="@ViewBag.CurrentParentValue">
             </div>
             <button type="submit" class="btn btn-default">@CodeMasterViewResource.Search</button>
             <div class="btn-group">
@@ -63,13 +67,13 @@ else
         <table class="table">
             <tr>
                 <th>
-                    @Html.ActionLink(CodeMasterViewResource.Id, "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                    @Html.ActionLink(CodeMasterViewResource.Id, "Index", new { sortOrder = ViewBag.IdSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType, currentParentValue = ViewBag.CurrentParentValue })
                 </th>
                 <th>
-                    @Html.ActionLink(CodeMasterViewResource.Value, "Index", new { sortOrder = ViewBag.ValueSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                    @Html.ActionLink(CodeMasterViewResource.Value, "Index", new { sortOrder = ViewBag.ValueSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType, currentParentValue = ViewBag.CurrentParentValue })
                 </th>
                 <th>
-                    @Html.ActionLink(CodeMasterViewResource.LastUpdatedDateTime, "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType })
+                    @Html.ActionLink(CodeMasterViewResource.LastUpdatedDateTime, "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, currentCodeType = ViewBag.CurrentCodeType, currentParentValue = ViewBag.CurrentParentValue })
                 </th>
                 <th></th>
             </tr>
@@ -89,7 +93,6 @@ else
                     </td>
                     <td>
                         @Html.ActionLink(CodeMasterViewResource.Edit, "Edit", new { id = item.Id }) |
-                        @Html.ActionLink(CodeMasterViewResource.Details, "Details", new { id = item.Id }) |
                         @Html.ActionLink(CodeMasterViewResource.Delete, "Delete", new { id = item.Id })
                     </td>
                 </tr>

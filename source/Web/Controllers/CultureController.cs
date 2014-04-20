@@ -27,5 +27,14 @@ namespace Web.Controllers
             Response.AppendCookie(langCookie);
             return Redirect(returnUrl);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
